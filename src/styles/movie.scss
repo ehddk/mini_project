@@ -1,24 +1,36 @@
 @import "_reset";
-body {
+
+.visual-slide-container-inner-j {
     display: flex;
     justify-content: center;
-    align-items: center;
-}
-
-.visual-slide-container-j {
-    margin: 80px;
-}
-
-.list-j {
-    display: flex;
-    padding: 50px;
-    border: 1px;
+    // padding: 50px;
     outline: 1px solid red;
-    border-radius: 5px;
     gap: 30px;
 }
 
+span {
+    font-weight: 600;
+}
+
+.visual-slide-container-inner-j div {
+    outline: 1px solid blue;
+    padding: 30px;
+}
+
+h2 {
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
 .movie-list-j {
-    margin: 100px;
+    display: flex;
+    gap: 20px;
     padding: 50px;
+    outline: 1px solid black;
+}
+
+.movie-list-j div {
+    outline: 1px solid blue;
+    padding: 30px;
 }
