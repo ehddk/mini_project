@@ -14,14 +14,13 @@ export default {
         weather: path.resolve(__dirname,"pages/weather.html")//날씨
       },
     },
-  },
-  server: {
-    port: 3000,
-  },
-  plugins: [
-    injectHTML(),
-    // handlebars({
-    //   partialDirectory: path.resolve(__dirname, "partials"),
-    // }),
-  ],
+    server: {
+        port: 3000,
+    },
+    plugins: [
+        injectHTML(),
+        // handlebars({
+        //   partialDirectory: path.resolve(__dirname, "partials"),
+        // }),
+    ],
 };
