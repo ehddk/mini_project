@@ -11,6 +11,7 @@ export default {
         addTask: path.resolve(__dirname, "pages/add-task.html"), // 할 일 추가
         movies: path.resolve(__dirname, "pages/movies.html"), // 영화
         timer: path.resolve(__dirname, "pages/timer.html"), // 타이머
+        weather: path.resolve(__dirname,"pages/weather.html")//날씨
       },
     },
   },
