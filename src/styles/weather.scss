@@ -1,0 +1,20 @@
+@import "_reset";
+
+.sub_weather{
+
+    display:flex;
+    list-style:none;
+    gap:30px;
+}
+.sub_weather li{
+    width:100px;
+    height:100px;
+    outline:1px solid blue;
+}
+
+.weather_container{
+    outline:1px solid red;
+}
+.weathers_box{
+    outline:1px solid green;
+}
