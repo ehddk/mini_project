@@ -1,0 +1,36 @@
+@import "_reset";
+
+.visual-slide-container-inner-j {
+    display: flex;
+    justify-content: center;
+    // padding: 50px;
+    outline: 1px solid red;
+    gap: 30px;
+}
+
+span {
+    font-weight: 600;
+}
+
+.visual-slide-container-inner-j div {
+    outline: 1px solid blue;
+    padding: 30px;
+}
+
+h2 {
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.movie-list-j {
+    display: flex;
+    gap: 20px;
+    padding: 50px;
+    outline: 1px solid black;
+}
+
+.movie-list-j div {
+    outline: 1px solid blue;
+    padding: 30px;
+}
