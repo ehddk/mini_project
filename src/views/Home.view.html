@@ -1,10 +1,39 @@
-<load src="../components/Header.html" title="Hello" />
-<div class="section">
-    <div class="content mainWeather-y">날씨 출력</div>
-</div>
-<div class="section">
-    <div class="content mainTodo-y">할일 출력</div>
-</div>
-<div class="section">
-    <div class="content mainMovie-y">영화 출력</div>
+<load src="../components/Header.html" title="HOME" />
+<div class="home-container">
+    <section class="inner">
+        <div class="weather">
+            <h2>오늘의 날씨</h2>
+            <div class="content-box">
+                <div class="content">
+                    <!-- <h3 class="place">서울시</h3> -->
+                    <!-- <p>20도</p> -->
+                    <div class="top">
+                        <div class="city"></div>
+                        <span class="icon"></span>
+                        <div class="current_temp"></div>
+                    </div>
+                    <ul class="bot">
+                        <li class="temp_min"></li>
+                        <li class="temp_max"></li>
+                        <li class="humidity"></li>
+                        <li class="wind"></li>
+                        <li class="cloud"></li>
+                    </ul>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="inner">
+        <div class="todo">
+            <h2>오늘의 할 일</h2>
+            <div class="content-box">
+                <span></span>
+                <p>1. 오늘 공부하기</p>
+            </div>
+        </div>
+    </section>
+    <section class="inner">
+        <div class="movie-box">영화 출력</div>
+    </section>
 </div>
