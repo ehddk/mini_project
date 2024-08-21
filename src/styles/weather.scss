@@ -1,20 +1,131 @@
 @import "_reset";
 
+.weather_wrap{
+    
+}
+
+.main_weather p{
+    font-size:40px;
+    display:flex;
+   justify-content: center;
+   align-items: center;
+   padding:20px;
+}
+.main_weather .icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main_weather #mainIcon {
+    width:200px;
+    
+}
 .sub_weather{
 
     display:flex;
     list-style:none;
-    gap:30px;
+    gap:50px;
+    justify-content: center;
+    padding:20px;
 }
-.sub_weather li{
+.sub_content{
     width:100px;
     height:100px;
-    outline:1px solid blue;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius:10px;
+
+}
+.sub_content div{
+    display: flex;
+    flex-direction: column;
+    width:80px;
+    height:80px;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    gap:5px;
+    margin-top:15px;
+
+
+
 }
 
-.weather_container{
-    outline:1px solid red;
+h2{
+    font-size:30px;
 }
-.weathers_box{
+p{
+    font-size:15px;
+}
+.main_weather .icon{
+    width:300px;
+    height:300px;
+    margin:0 auto;
+    background: rgba(255, 255, 255, 0.1);
+}
+.weather_list {
+    width: 100%;
+}
+.weather_list h3{
+    font-weight:300;
+}
+.weather_list .util{
+    display: flex;
+    justify-content: space-between;
+}
+.weather_list button{
+    color:#fff;
+}
+.weather_container{
+
+    display: flex;
+    flex-wrap: wrap;
+gap:10px;
+margin-top:30px;
+justify-content: center;
+
+
+}
+.weathers_box {
+    list-style: none;
+    width:45%;
+    height:150px;
+    padding:0.4rem;
+    background: rgba(255, 255, 255, 0.1);
+}
+.weathers_box .content{
+    display:flex;
+height: 100%;
     outline:1px solid green;
+    padding:1rem;
+}
+.weathers_box .left{
+display: flex;
+flex-direction: column;
+width: 50%;
+padding: 10px;
+
+}
+.weathers_box .right{
+    margin: 0 auto;
+}
+
+
+.max{
+    color:red;
+}
+.min{
+    color:lightcyan;
+}
+
+/*반응형 미디어 쿼리*/
+@media all and (max-width:610px){
+
+    .sub_weather{
+        display:flex; 
+        flex-wrap: wrap;
+  
+    }
+    .sub_content{
+       width:200px;
+    }
 }
