@@ -1,51 +1,146 @@
-<load src="../components/Header.html" title="Hello" />
-<h2>weather</h2>
+<load src="../components/Header.html" title="Weather" />
+<div class="weather_wrap">
+    <section>
+        <h2 id="city">도시</h2>
+        <p>오늘 날짜</p>
+     </section>
+     <section>
+         <div class="main_weather">
+             <div class="icon">
+                <img id="mainIcon" alt="Weather Icon">
+             </div>
+             <p id="temperature">20'C</p>
+         </div>
+         <div>
+             <ul class="sub_weather">
+                <li class="sub_content">
+                    <div>
+                        <p>체감온도</p>
+                    <i class="fa-solid fa-temperature-empty feels"></i>
+                    <p id="feelsTemp"><p>
+                </div>
+                </li>
+                <li class="sub_content">
+                    <div>
+                        <p>최고온도</p>
+                    <i class="fa-solid fa-temperature-empty max"></i>
+                    <p id="maxTemp"><p>
+                </div>
+                </li>
+                <li class="sub_content">
+                    <div>
+                        <p>최저온도</p>
+                    <i class="fa-solid fa-temperature-empty min"></i>
+                    <p id="minTemp"><p>
+                </div>
+                </li>
+                 <li class="sub_content">
+                <div>
+                    <p>습도</p>
+                      <i class="fa-solid fa-droplet"></i>
+                    <p id="humidity"><p>
+                    </div>
+                 </li>
+                 <li class="sub_content">
+                    <div>
+                        <p>풍속</p>
+                        <i class="fa-solid fa-wind"></i>
+                        <p id="wind"><p>   
+                    </div>
+                 </li>
+                 <li class="sub_content">
+                <div>
+                    <p>구름양<p>
+                        <i class="fa-solid fa-cloud"></i>
+                    <p id="cloud"></p>
+                </div>
+                 </li>
+                 <li class="sub_content">
+                <div>
+                    <p>강수량<p>
+                        <i class="fa-solid fa-cloud-rain"></i>
+                    <p id="rain"></p>
+                    </div>
+                 </li>
+             </ul>
+         </div>
+     
+     </section>
+     
+     <section class="weather_list">
+         <div class="util">
+             <h3>지역 일기예보</h3>
+             <button>View All</button>
+         </div>
+         <ul class="weather_container">
+             <li class="weathers_box">
+               <div class="content">
+                <div class="left">
+                    <div class="top">
+                        <p>서울</p>
+                        <p id="seoul"></p>
+                    </div>
+                    <div class="down"><p>hihi</p></div>
+                </div>
+                <div class="right">
+                    <div class="icon">
+                        아이콘
+                    </div>
+                </div>
+               </div>
+             </li>
+             <li class="weathers_box">
+                <div class="content">
+                    <div class="left">
+                        <div class="top">
+                            <p>강원도</p>
+                            <p id="Gangwon"></p>
+                        </div>
+                        <div class="down"><p>hihi</p></div>
+                    </div>
+                    <div class="right">
+                        <div class="icon">
+                            아이콘
+                        </div>
+                    </div>
+                    </div>
+             </li>
+             <li class="weathers_box">
+                <div class="content">
+                <div class="left">
+                    <div class="top">
+                        <p>전라남도</p>
+                        <p id="jeonN"></p>
+                    </div>
+                    <div class="down"><p id="jeonDes"></p></div>
+                </div>
+                <div class="right">
+                    <div class="icon">
+                       <img id="jeonN_icon">
+                    </div>
+                </div>
+                </div>
+             </li>
 
-<section>
-   <h2>도시</h2>
-   <p>디테일</p>
-</section>
-<section>
-    <div class="main_weather">
-        <div>
-            아이콘
-        </div>
-        <p>20'C</p>
-    </div>
-    <div>
-        <ul class="sub_weather">
-            <li>
-                <a href="#">습도</a>
-            </li>
-            <li>
-                <a href="#">풍속</a>
-            </li>
-            <li>
-                <a href="#">기압</a>
-            </li>
-        </ul>
-    </div>
+             <li class="weathers_box">
+                <div class="content">
+                   
+                <div class="left">
 
-</section>
-
-<section>
-    <div>
-        <h3>Favorite Locations</h3>
-        <button>View All</button>
-    </div>
-    <ul class="weather_container">
-        <li class="weathers_box">
-            <a href="#">오늘날씨</a>
-        </li>
-        <li class="weathers_box">
-            <a href="#">내일날씨</a>
-        </li>
-        <li class="weathers_box">
-            <a href="#">모레날씨</a>
-        </li>
-        <li class="weathers_box">
-            <a href="#">모레날씨</a>
-        </li>
-    </ul>
- 
-</section>
+                    <div class="top">
+                        <p>전라북도</p>
+                        <p id="jeonb"></p>
+                    </div>
+                    <div class="down"><p id="description"></p></div>
+                </div>
+                <div class="right">
+                    <div class="icon">
+                       <img id="jeonb_icon">
+                    </div>
+                </div>
+                </div>
+             </li>
+         </ul>
+      
+     </section>
+</div>
