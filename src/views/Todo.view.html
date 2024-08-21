@@ -1,10 +1,47 @@
-<load src="../components/Header.html" title="Hello" />
-<div>
-    <div>
-        <h2>To Do List</h2>
-        <div>
-            <input type="text" placeholder="..." />
-            <button>ADD!!</button>
-        </div>
+<load src="../components/Header.html" title="Todo" />
+
+<body>
+  <div class="todo-container">
+    <h2>!! 아유영의 To Do List !!</h2>
+    <h3 id="todo_current_date"></h3>
+    <div id="newtask">
+      <input type="text" placeholder="아유영의 할일 입력하기" />
+      <button id="push">+</button>
     </div>
-</div>
+    <div id="tasks"></div>
+  </div>
+
+  <!-- 성공률 -->
+
+  <!-- 타이머 -->
+  <div id="timer-phomo">
+    <div class="timer-container">
+      <h4>pomodoro</h4>
+
+      <div class="painel">
+        <p id="work">work</p>
+        <p id="break">break</p>
+      </div>
+
+      <div class="timer">
+        <div class="circle">
+          <div class="time">
+            <p id="minutes"></p>
+            <p>:</p>
+            <p id="seconds"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button id="start" onclick="start()">
+          <i class="fa-solid fa-play"></i>
+        </button>
+
+        <a id="reset" href="./"
+          ><i class="fa-solid fa-arrow-rotate-left"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+</body>

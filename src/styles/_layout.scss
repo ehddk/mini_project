@@ -4,12 +4,17 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  background-color: #ecedef;
+  background: linear-gradient(
+    42deg,
+    rgba(17, 25, 45, 1) 0%,
+    rgba(14, 14, 145, 1) 89%,
+    rgba(33, 76, 113, 1) 100%
+  );
+  color: #fff;
 }
 
 .container {
   flex: 1 auto;
   overflow: auto;
-  padding:2rem;
+  padding: 2rem;
 }
-
