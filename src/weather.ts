@@ -80,7 +80,6 @@ const dustService= new DustService();
     const humidity=weatherData.main.humidity;
     const wind = weatherData.wind.speed;
     const rain=weatherData?.rain?.["1h"] ?? "정보 없음";
-    
     const cloud=weatherData.clouds.all;
     const maxTemp= weatherData.main.temp_max;
     const minTemp=weatherData.main.temp_min;
