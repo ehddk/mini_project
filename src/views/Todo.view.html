@@ -1,33 +1,15 @@
 <load src="../components/Header.html" title="Todo" />
 
 <div class="todo-container">
-  <h2>!! 아유영의 To Do List !!</h2>
-  <h3 id="todo_current_date"></h3>
-  <div id="newtask">
-    <input type="text" placeholder="아유영의 할일 입력하기" />
-    <button id="push">+</button>
-  </div>
-  <div id="tasks"></div>
-</div>
-
-<!-- 캘린더 만들기 -->
-<div class="calendar-container">
-  <div class="calendar">
-    <div class="calendar-header">
-      <span class="month-picker" id="month-picker">AUG</span>
-      <div class="year-picker" id="year-picker">
-        <span class="year-change" id="pre-year">
-          <button>⬅</button>
-        </span>
-        <span id="year">2024</span>
-        <span class="year-change" id="next-year">
-          <button>➡</button>
-        </span>
+  <div class="left">
+    <div class="calendar">
+      <div class="month">
+        <!-- 폰트어썸 사용 -->
+        <i class="fas fa-angle-left prev"></i>
+        <div class="date">aug 2024</div>
+        <i class="fas fa-angle-right next"></i>
       </div>
-    </div>
-
-    <div class="calendar-body">
-      <div class="calendar-week-days">
+      <div class="weekdays">
         <div>Sun</div>
         <div>Mon</div>
         <div>Tue</div>
@@ -36,8 +18,51 @@
         <div>Fri</div>
         <div>Sat</div>
       </div>
-      <div class="calendar-days"></div>
+      <div class="days"></div>
+      <div class="goto-today">
+        <div class="goto">
+          <input type="text" placeholder="08/2024" class="date-input" />
+          <button class="goto-btn">Go</button>
+        </div>
+        <button class="today-btn">TODAY</button>
+      </div>
     </div>
-    <div class="month-list"></div>
   </div>
+  <div class="right">
+    <div class="today-date">
+      <div class="event-day">thu</div>
+      <div class="event-date">22th august 2024</div>
+    </div>
+    <div class="events"></div>
+    <div class="add-event-wrapper">
+      <div class="add-event-header">
+        <div class="title">할 일 등록하기</div>
+        <i class="fas fa-times close"></i>
+      </div>
+      <div class="add-event-body">
+        <div class="add-event-input">
+          <input type="text" placeholder="할 일" class="event-name" />
+        </div>
+        <div class="add-event-input">
+          <input
+            type="text"
+            placeholder="언제부터 할래?!"
+            class="event-time-from"
+          />
+        </div>
+        <div class="add-event-input">
+          <input
+            type="text"
+            placeholder="언제까지 할래?!"
+            class="event-time-to"
+          />
+        </div>
+      </div>
+
+      <div class="add-event-footer">
+        <button class="add-event-btn">할일 추가!</button>
+      </div>
+    </div>
+  </div>
+  <button class="add-event">+</button>
 </div>
