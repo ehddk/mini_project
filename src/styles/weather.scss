@@ -1,11 +1,35 @@
 @import "_reset";
 
-.weather_wrap{
-    
+.location{
+    display: flex;
+    gap:10px;
 }
+.location .fa-solid{
+   margin-top:15px;
+}
+.main_weather{
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    margin-top:20px;
+}
+.main_weather .left{
+    width:50%;
+   
+}
+.main_weather .right{
+    padding:30px;
 
+   // background:rgba(255, 255, 255, 0.1);
+}
+.main_weather #dust, #inform{
+    background-color: rgba(255, 255, 255, 0.1);
+    font-size:15px;
+    margin:10px;
+    width:100%;
+    border-radius: 15px;
+}
 .main_weather p{
-    font-size:40px;
+    font-size:20px;
     display:flex;
    justify-content: center;
    align-items: center;
@@ -13,9 +37,16 @@
 }
 .main_weather .icon{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    width:100%;
+
+
+    margin:0 auto;
+    
 }
+
 .main_weather #mainIcon {
     width:200px;
     
@@ -45,9 +76,6 @@
     align-items: center;
     gap:5px;
     margin-top:15px;
-
-
-
 }
 
 h2{
@@ -56,11 +84,11 @@ h2{
 p{
     font-size:15px;
 }
-.main_weather .icon{
-    width:300px;
-    height:300px;
-    margin:0 auto;
-    background: rgba(255, 255, 255, 0.1);
+.update{
+    display: flex;
+    justify-content: flex-end;
+    font-size:12px;
+    color:lightgray;
 }
 .weather_list {
     width: 100%;
@@ -88,14 +116,13 @@ justify-content: center;
 .weathers_box {
     list-style: none;
     width:45%;
-    height:150px;
+    //height:150px;
     padding:0.4rem;
     background: rgba(255, 255, 255, 0.1);
 }
 .weathers_box .content{
     display:flex;
-height: 100%;
-    outline:1px solid green;
+    height: 100%;
     padding:1rem;
 }
 .weathers_box .left{
@@ -117,6 +144,11 @@ padding: 10px;
     color:lightcyan;
 }
 
+#message{
+    display: flex;
+    justify-content: center;
+    font-size:15px;
+}
 /*반응형 미디어 쿼리*/
 @media all and (max-width:610px){
 
@@ -127,5 +159,37 @@ padding: 10px;
     }
     .sub_content{
        width:200px;
+    }
+}
+@media all and (max-width:880px){
+    .sub_weather{
+        display:flex; 
+        flex-wrap: wrap;
+
+    }
+}
+@media all and (max-width:553px) {
+    .sub_weather{
+        display: flex;
+        flex-wrap: wrap;
+      //  justify-content: space-between;
+    }
+    .sub_content {
+        width: calc(50% - 10px);  // 두 개씩 배치되도록 너비 조정
+        margin-bottom: 10px;      // 세로 간격 추가
+    }
+}
+@media all and (max-width:420px){
+    // .sub_content{
+    //     width:100%;
+    // }
+    .weathers_box .content{
+        display: flex;
+        flex-direction: column;
+       
+     
+    }
+    .weathers_box{
+
     }
 }

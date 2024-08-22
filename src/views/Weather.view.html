@@ -1,15 +1,27 @@
 <load src="../components/Header.html" title="Weather" />
 <div class="weather_wrap">
     <section>
-        <h2 id="city">도시</h2>
-        <p>오늘 날짜</p>
+        <div class="location">
+            <i class="fa-solid fa-location-dot"></i>
+            <h2 id="city">도시</h2>
+        </div>
+        <p id="today_date"></p> 
      </section>
      <section>
          <div class="main_weather">
-             <div class="icon">
-                <img id="mainIcon" alt="Weather Icon">
+            <div class="left">
+                <div class="icon">
+                    <img id="mainIcon" alt="Weather Icon">
+                    <p id="temperature"></p>
+                    <p id="message"></span>
+                 </div>
+            </div>
+             <div class="right">
+                <p style="color:green">미세먼지</p>
+                <p id="dust"></p>
+                <p id="inform"></p><span class="update">업데이트 완료</span>
              </div>
-             <p id="temperature">20'C</p>
+           
          </div>
          <div>
              <ul class="sub_weather">
@@ -70,7 +82,7 @@
      <section class="weather_list">
          <div class="util">
              <h3>지역 일기예보</h3>
-             <button>View All</button>
+             <a href="https://weather.naver.com/today/14110122">자세히 보기</a>
          </div>
          <ul class="weather_container">
              <li class="weathers_box">
@@ -80,11 +92,11 @@
                         <p>서울</p>
                         <p id="seoul"></p>
                     </div>
-                    <div class="down"><p>hihi</p></div>
+                    <div class="down"><p id="seoulDes"></p></div>
                 </div>
                 <div class="right">
                     <div class="icon">
-                        아이콘
+                        <img id="seoul_icon">
                     </div>
                 </div>
                </div>
@@ -94,13 +106,13 @@
                     <div class="left">
                         <div class="top">
                             <p>강원도</p>
-                            <p id="Gangwon"></p>
+                            <p id="gangwon"></p>
                         </div>
-                        <div class="down"><p>hihi</p></div>
+                        <div class="down"><p id="gangDes"></p></div>
                     </div>
                     <div class="right">
                         <div class="icon">
-                            아이콘
+                            <img id="gang_icon">
                         </div>
                     </div>
                     </div>

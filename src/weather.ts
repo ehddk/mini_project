@@ -1,4 +1,5 @@
 import { getUserLocation } from "./api/instances/getUserLocation";
+import { DustService } from "./api/services/weathers/dust.service";
 //import { MidWeatherService } from "./api/services/weathers/dailyWeather.service";
 import { WeatherService } from "./api/services/weathers/weather.service";
 import "./main";
@@ -6,9 +7,16 @@ import "./styles/weather.scss";
 
 const weatherService= new WeatherService();
 //const midWeatherService=new MidWeatherService();
+const dustService= new DustService();
 
 (async ()=>{
     const {lat,lon}=await getUserLocation();
+    /**시간 */
+    const today=new Date();
+    let year=today.getFullYear();
+    let month = (today.getMonth() + 1).toString().padStart(2, '0');  // 월을 2자리로 표시
+    let date = today.getDate().toString().padStart(2, '0');
+    let today_date=year + '-' + month+ '-'+date;
 
     const weatherData=await weatherService.getCurrentWeather({
         params:{
@@ -32,28 +40,38 @@ const weatherService= new WeatherService();
         }
     })
 
-    // const seoulData=await weatherService.getCurrentWeather({
-    //     params:{
-    //         lat:,
-    //         lon:,
-    //     }
-    // })
-    // const midWeatherData=await midWeatherService.getMidWeather({
-    //     params:{
-    //         regId:'11D20501',
-    //         tmFc:123,
-    //         dataType:'JSON'
-    //     }
-       
+    const seoulData=await weatherService.getCurrentWeather({
+        params:{
+            lat:37.5657,
+            lon:126.978,
+        }
+    })
+    const gangwonData=await weatherService.getCurrentWeather({
+        params:{
+            lat:37.8228,
+            lon:128.1555,
+        }
+    })
+   /**미세먼지 조회 데이터 */
+   const dustData=await dustService.getDust({
+    params:{
+        returnType: 'json',
+        numOfRows:100,
+        pageNo:1,
+        searchDate:today_date,
+        InformCode: 'PM10'
+    }
+})  
 
-    // })
-    // console.log('mid',midWeatherData)
-    // const weatherData = await weatherService.getCurrentWeather({
-    //     params:{
-    //         lat: 37.5665,
-    //          lon: 126.978,
-    //     }
-    // })
+    /**미세먼지 데이터 */
+   const dust=dustData.response.body.items[0]?.informCause;
+  const dustInform=dustData.response.body.items[0]?.informOverall;
+  const dustEle=document.getElementById('dust');
+   const informEle=document.getElementById('inform');
+   
+   dustEle && (dustEle.textContent=`${dust}`);
+   dustEle && (dustEle.textContent=`${dust}`);
+   informEle &&(informEle.textContent=`${dustInform}`);
 
     /**현재 사용자의 위치 기반 */
     const cityName=weatherData.name;
@@ -61,8 +79,9 @@ const weatherService= new WeatherService();
     const feelsTemp=weatherData.main.feels_like;
     const humidity=weatherData.main.humidity;
     const wind = weatherData.wind.speed;
-     const rain=weatherData.rain["1h"];
-     const cloud=weatherData.clouds.all;
+    const rain=weatherData?.rain?.["1h"] ?? "정보 없음";
+    
+    const cloud=weatherData.clouds.all;
     const maxTemp= weatherData.main.temp_max;
     const minTemp=weatherData.main.temp_min;
     const weatherIcon=weatherData.weather[0].icon;
@@ -79,6 +98,7 @@ const weatherService= new WeatherService();
     const cloudEle = document.getElementById('cloud')
     const minEle=document.getElementById('minTemp');
     const maxEle=document.getElementById('maxTemp');
+
     
 
     /**타 지역 위치 기반 */
@@ -93,6 +113,21 @@ const weatherService= new WeatherService();
 
     /**강원도,서울 데이터 */
     const seoul_temp=seoulData.main.temp;
+    const Gangwon_temp=gangwonData.main.temp;
+    const seoul_des=seoulData.weather[0].description;
+    const gang_des=seoulData.weather[0].description;
+    const seoul_icon=seoulData.weather[0].icon;
+    const gang_icon=gangwonData.weather[0].icon;
+    
+    /**강원도,서울 엘리먼트 */
+    const gangwonEle=document.getElementById('gangwon');
+    const seoulEle=document.getElementById('seoul');
+    const gangwonDes=document.getElementById('gangDes');
+    const seoulDes=document.getElementById('seoulDes');
+    const seoulIcon=document.getElementById('seoul_icon');
+    const gangIcon=document.getElementById('gang_icon');
+    const seoulAdrs=`http://openweathermap.org/img/wn/${seoul_icon}@2x.png`;
+    const gangAdrs=`http://openweathermap.org/img/wn/${gang_icon}@2x.png`;
 
       /**전북,전남 엘리먼트  */
     const tempEle=document.getElementById('jeonb');
@@ -108,22 +143,16 @@ const weatherService= new WeatherService();
     feelsEle&& (feelsEle.textContent=`${((feelsTemp)-273.15).toFixed(2)}도`)
     humEle&& (humEle.textContent=`${humidity}%`)
     windEle && (windEle.textContent=`${wind}m/s`)
-    rainEle && (rainEle.textContent=`${rain}mm`)
+    rainEle && (rainEle.textContent=`${rain}`)
     cloudEle && (cloudEle.textContent=`${cloud}`)
     minEle &&(minEle.textContent=`${(minTemp-273.15).toFixed(2)}도`)
     maxEle && (maxEle.textContent=`${(maxTemp-273.15).toFixed(2)}도`)
-    if(iconEle){
-        iconEle.src = weatherIconAdrs; // 이미지 URL을 img의 src 속성에 설정
-        iconEle.alt = "Weather Icon";
-    }
-    if(area1_icon){
-        area1_icon.src = areaIconAdrs; // 이미지 URL을 img의 src 속성에 설정
-        area1_icon.alt = "Weather Icon";
-    }
-    if(jeonNIcon){
-        jeonNIcon.src = jeonNIconAdrs; // 이미지 URL을 img의 src 속성에 설정
-        jeonNIcon.alt = "Weather Icon";
-    }
+
+    iconEle && (iconEle.src = weatherIconAdrs);// 이미지 URL을 img의 src 속성에 설정
+    area1_icon && (area1_icon.src = areaIconAdrs);
+    jeonNIcon && (jeonNIcon.src = jeonNIconAdrs); 
+    seoulIcon && (seoulIcon.src = seoulAdrs);
+    gangIcon && (gangIcon.src = gangAdrs);
 
     /*전남,전북 */
     tempEle&&(tempEle.textContent = `${(jeonb_temp-273.15).toFixed(2)}도`);
@@ -131,8 +160,33 @@ const weatherService= new WeatherService();
     jeonNEle&&(jeonNEle.textContent =`${(jeonN_temp-273.15).toFixed(2)}도`);
     jeonNDes&&(jeonNDes.textContent=`${jeonNdes}`);
 
+    /**서울,강원도 */
+    seoulEle&&(seoulEle.textContent=`${(seoul_temp-273.15).toFixed(2)}도`);
+    gangwonEle&&(gangwonEle.textContent=`${(Gangwon_temp-273.15).toFixed(2)}도`);
+    seoulDes&&(seoulDes.textContent=`${seoul_des}`);
+    gangwonDes && (gangwonDes.textContent=`${gang_des}`);
+    
+    
+    const dateEle = document.getElementById('today_date');
+    dateEle && (dateEle.textContent=`${today_date}`)
+
+    const messageEle = document.getElementById('message'); // 문구를 표시할 엘리먼트
+
+    const calcTemp = (temperature - 273.15).toFixed(2);
+    switch (true) {
+        case calcTemp > 30:
+            messageEle && (messageEle.textContent = '폭염 조심하세요!');
+            break;
+        case calcTemp > 27:
+            messageEle && (messageEle.textContent = '다소 덥습니다.외출시 얇은 옷차림을 추천합니다');
+            break;
+        case calcTemp > 20:
+            messageEle && (messageEle.textContent = '따뜻한 날씨입니다.');
+            break;
+        default:
+            messageEle && (messageEle.textContent = '쌀쌀한 날씨입니다.');
+    }
 
 
-
-    console.log(jeonbWeatherData)
+   // console.log(dustData)
 })();
