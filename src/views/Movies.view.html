@@ -1,44 +1,64 @@
 <load src="../components/Header.html" title="Movie List" />
-
 <div class="movie-container">
-    <h2 class="movie-title">오늘의 추천 영화</h2>
+    <h2>오늘의 추천 영화</h2>
     <a href="">
-        <div class="today-rec-movie">1</div>
+        <span class="today-rec-movie">1</span>
     </a>
 
-    <!-- <div class="movie-slide-container-inner">
+    <!-- <section class="movie-slide-container-inner">
         <div>1</div>
-    </div> -->
+    </section> -->
 
-    <h2 class="movie-title">현재 상영중인 영화</h2>
-    <section class="movie-list-nowplaying" id="movie-list-nowplaying">
-        <button type="button" class="movie-pager-prev">
-            <i class="fa-solid fa-arrow-left" style="color: #ffffff"></i>
-        </button>
-        <ul class="movie-list-detail">
-            <!-- <a href="#"><li>영화</li></a>
-                        <a href="#"><li>영화</li></a>
-                        <a href="#"><li>영화</li></a>
-                        <a href="#"><li>영화</li></a> -->
-        </ul>
-        <button type="button" class="movie-pager-next">
-            <i class="fa-solid fa-arrow-right" style="color: #ffffff"></i>
-        </button>
-    </section>
+    <h2>현재 상영중인 영화</h2>
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <section
+                    class="movie-list-nowplaying"
+                    id="movie-list-nowplaying"
+                >
+                    <ul class="movie-list-detail">
+                        <!-- <a href="#"><li>영화</li></a>
+                <a href="#"><li>영화</li></a>
+                <a href="#"><li>영화</li></a>
+                <a href="#"><li>영화</li></a> -->
+                    </ul>
+                </section>
+            </div>
+            <button type="button" class="swiper-button-prev">
+                <!-- <i
+                    class="fa-solid fa-arrow-left"
+                    style="color: #ffffff"
+                ></i> -->
+            </button>
+            <button type="button" class="swiper-button-next">
+                <!-- <i
+                    class="fa-solid fa-arrow-right"
+                    style="color: #ffffff"
+                ></i> -->
+            </button>
+        </div>
+    </div>
 
-    <h2 class="movie-title">개봉 예정 영화</h2>
-    <section class="movie-list-upcoming" id="movie-list-upcoming">
-        <button type="button" class="movie-pager-prev">
-            <i class="fa-solid fa-arrow-left" style="color: #ffffff"></i>
-        </button>
-        <ul class="movie-list-detail">
-            <!-- <a href="#"><li>영화1</li></a>
+    <h2>개봉 예정 영화</h2>
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <section class="movie-list-upcoming" id="movie-list-upcoming">
+                    <ul class="movie-list-detail">
+                        <!-- <a href="#"><li>영화1</li></a>
                     <a href="#"><li>영화2</li></a>
                     <a href="#"><li>영화3</li></a>
                     <a href="#"><li>영화4</li></a> -->
-        </ul>
-        <button type="button" class="movie-pager-next" id="movie-pager-right">
-            <i class="fa-solid fa-arrow-right" style="color: #ffffff"></i>
-        </button>
-    </section>
+                    </ul>
+                </section>
+            </div>
+        </div>
+        <button type="button" class="swiper-button-prev"></button>
+        <button
+            type="button"
+            class="swiper-button-next"
+            id="movie-pager-right"
+        ></button>
+    </div>
 </div>

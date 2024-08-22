@@ -29,7 +29,7 @@
 
 .movie-container-inner {
     display: flex;
-    justify-content: center;
+    justify-content: spac;
     align-items: center;
     background: rgba(233, 201, 201, 0.1);
     border-radius: 10px;
@@ -75,8 +75,8 @@
     padding: 20px 0;
 }
 
-.movie-pager-prev,
-.movie-pager-next {
+.swiper-button-prev,
+.swiper-button-next {
     cursor: pointer;
     font-size: 40px;
     color: #ffffff;
