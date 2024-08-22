@@ -16,6 +16,7 @@
   "dependencies": {
     "dayjs": "^1.11.12",
     "sass": "^1.77.8",
+    "swiper": "^11.1.10",
     "vite-plugin-html-inject": "^1.1.2"
   }
 }
