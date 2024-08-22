@@ -1,23 +1,21 @@
 @import "_reset";
 
 .todo-container {
-  width: 1200px;
-  max-width: 70%;
+  width: 100%;
+  max-width: 1200px;
   position: relative;
   min-height: 850px;
   margin: 0 auto;
-  padding: 5px;
   color: #fff;
   display: flex;
-  border-radius: 10px;
+  border-radius: 20px;
   background-color: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
 }
 
 /* left css */
 .left {
   width: 60%;
-  padding: 20px;
-  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .calendar {
@@ -378,4 +376,8 @@
 .add-event-footer .add-event-btn:hover {
   background-color: transparent;
   color: #b38add;
+}
+
+@media (max-width: 800px) {
+  
 }
