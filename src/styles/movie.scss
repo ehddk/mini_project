@@ -1,36 +1,107 @@
 @import "_reset";
 
-.visual-slide-container-inner-j {
+//미디어쿼리
+@media (max-width: 950px) {
+    .movie-container-inner {
+        max-height: 1150px;
+    }
+
+    .movie-container-inner {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .rec-movie-image {
+        display: flex;
+    }
+}
+
+@media (max-width: 500px) {
+    .movie-container-inner {
+        max-height: 2000px;
+    }
+
+    .movie-container-inner {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .rec-movie-image {
+        display: flex;
+        max-width: 300px;
+        width: 100%;
+    }
+}
+
+.movie-container-inner {
     display: flex;
     justify-content: center;
-    // padding: 50px;
-    outline: 1px solid red;
-    gap: 30px;
+    align-items: center;
+    background: rgba(233, 201, 201, 0.1);
+    border-radius: 10px;
 }
 
-span {
-    font-weight: 600;
+.movie-container-inner div {
+    padding: 20px;
+    border-radius: 10px;
 }
 
-.visual-slide-container-inner-j div {
-    outline: 1px solid blue;
-    padding: 30px;
+.rec-movie-image {
+    border-radius: 10px;
+    object-fit: cover;
+    height: 450px;
+}
+
+p {
+    font-size: 20px;
+    margin: 30px 0;
 }
 
 h2 {
-    margin-top: 20px;
-    font-size: 16px;
-    font-weight: 600;
+    margin-top: 100px;
+    padding-bottom: 30px;
+    font-size: 30px;
+    font-weight: bold;
 }
 
-.movie-list-j {
+.movie-list-nowplaying,
+.movie-list-upcoming {
     display: flex;
-    gap: 20px;
-    padding: 50px;
-    outline: 1px solid black;
+    align-items: center;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
 }
 
-.movie-list-j div {
-    outline: 1px solid blue;
-    padding: 30px;
+.movie-list-detail {
+    display: flex;
+    margin-top: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 20px 0;
+}
+
+.movie-pager-prev,
+.movie-pager-next {
+    cursor: pointer;
+    font-size: 40px;
+    color: #ffffff;
+    padding: 20px 10px;
+    z-index: 1;
+}
+
+.movie-image {
+    border-radius: 10px;
+    height: 400px;
+}
+
+.movie-list-detail li {
+    margin: 15px;
+    list-style: none;
+    transition: transform 0.3s ease;
+}
+
+.movie-list-detail li:hover {
+    transform: scale(1.1);
+    border-radius: 10px;
 }

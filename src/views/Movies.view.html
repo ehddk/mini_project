@@ -1,9 +1,43 @@
-<load src="../components/Header.html" title="Hello" />
-<div class="visual-slide-container-j">
-    <span>추천 영화</span>
-    <section class="visual-slide-container-inner-j">
+<load src="../components/Header.html" title="Movie List" />
+<div class="movie-container">
+    <h2>오늘의 추천 영화</h2>
+    <a href="">
+        <span class="today-rec-movie">1</span>
+    </a>
+
+    <!-- <section class="movie-slide-container-inner">
         <div>1</div>
+    </section> -->
+
+    <h2>현재 상영중인 영화</h2>
+    <section class="movie-list-nowplaying" id="movie-list-nowplaying">
+        <button type="button" class="movie-pager-prev">
+            <i class="fa-solid fa-arrow-left" style="color: #ffffff"></i>
+        </button>
+        <ul class="movie-list-detail">
+            <!-- <a href="#"><li>영화</li></a>
+            <a href="#"><li>영화</li></a>
+            <a href="#"><li>영화</li></a>
+            <a href="#"><li>영화</li></a> -->
+        </ul>
+        <button type="button" class="movie-pager-next">
+            <i class="fa-solid fa-arrow-right" style="color: #ffffff"></i>
+        </button>
     </section>
-    <h2>영화 리스트</h2>
-    <section class="movie-list-j">리스트</section>
+
+    <h2>개봉 예정 영화</h2>
+    <section class="movie-list-upcoming" id="movie-list-upcoming">
+        <button type="button" class="movie-pager-prev">
+            <i class="fa-solid fa-arrow-left" style="color: #ffffff"></i>
+        </button>
+        <ul class="movie-list-detail">
+            <!-- <a href="#"><li>영화1</li></a>
+            <a href="#"><li>영화2</li></a>
+            <a href="#"><li>영화3</li></a>
+            <a href="#"><li>영화4</li></a> -->
+        </ul>
+        <button type="button" class="movie-pager-next" id="movie-pager-right">
+            <i class="fa-solid fa-arrow-right" style="color: #ffffff"></i>
+        </button>
+    </section>
 </div>
