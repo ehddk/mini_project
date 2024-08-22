@@ -1,34 +1,65 @@
 @import "_reset";
 
+.util_menu{
+    display:flex;
+    gap:20px;
+}
+.util_menu .list{
+    list-style: none;
+    width:100px;
+    height:100px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    display: flex;
+  justify-content: center;
+}
+.util_menu .list .temp{
+    width:100px;
+    height:100px;
+   
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:5px;
+}
+
 .location{
     display: flex;
+    justify-content: flex-end;
     gap:10px;
 }
-.location .fa-solid{
-   margin-top:15px;
+.location #city{
+    font-weight: 200;
+}
+.location > .fa-solid{
+   margin-top:5px;
 }
 .main_weather{
-    background: rgba(255, 255, 255, 0.1);
-    display: flex;
+   display: flex;
     margin-top:20px;
 }
 .main_weather .left{
     width:50%;
-   
+}
+.main_weather .left > h1{
+    font-size:40px;
 }
 .main_weather .right{
     padding:30px;
 
    // background:rgba(255, 255, 255, 0.1);
 }
+
 .main_weather #dust, #inform{
     background-color: rgba(255, 255, 255, 0.1);
     font-size:15px;
-    margin:10px;
+    margin:10px 0 10px 0;
     width:100%;
     border-radius: 15px;
+    padding:20px;
 }
-.main_weather p{
+.main_weather .icon p{
     font-size:20px;
     display:flex;
    justify-content: center;
@@ -41,14 +72,18 @@
     justify-content: center;
     align-items: center;
     width:100%;
-
-
     margin:0 auto;
-    
 }
-
+.main_weather #temperature{
+    display: flex;
+    justify-content: flex-end;
+    font-size:5vw
+}
+// .main_weather .icon p{
+//     margin-bottom:-10px;
+// }
 .main_weather #mainIcon {
-    width:200px;
+    width:25vw;
     
 }
 .sub_weather{
@@ -78,10 +113,10 @@
     margin-top:15px;
 }
 
-h2{
+.location h2{
     font-size:30px;
 }
-p{
+.weather_wrap p{
     font-size:15px;
 }
 .update{
@@ -92,14 +127,24 @@ p{
 }
 .weather_list {
     width: 100%;
+
+// outline: 1px solid red;
+}
+.weather_list .util{
+    display: flex;
+  
+    gap:20px;
+}
+.weather_list .util .move{
+    display: flex;
+   margin-top: 10px;
+    font-size: .6rem;
+
 }
 .weather_list h3{
     font-weight:300;
 }
-.weather_list .util{
-    display: flex;
-    justify-content: space-between;
-}
+
 .weather_list button{
     color:#fff;
 }
@@ -107,9 +152,10 @@ p{
 
     display: flex;
     flex-wrap: wrap;
-gap:10px;
-margin-top:30px;
-justify-content: center;
+    gap:30px;
+    width: 100%;
+    margin-top:30px;
+// justify-content: center;
 
 
 }
@@ -145,8 +191,6 @@ padding: 10px;
 }
 
 #message{
-    display: flex;
-    justify-content: center;
     font-size:15px;
 }
 /*반응형 미디어 쿼리*/
@@ -161,11 +205,24 @@ padding: 10px;
        width:200px;
     }
 }
-@media all and (max-width:880px){
-    .sub_weather{
+@media all and (max-width:845px){
+    // .sub_weather{
+    //     display:flex; 
+    //     flex-wrap: wrap;
+
+    // }
+    #dust{
+        display:flex; 
+       flex-wrap: wrap;
+    }
+    .util_menu{
         display:flex; 
         flex-wrap: wrap;
-
+        
+    }
+    .util_menu .list{
+        flex-grow: 1;
+ 
     }
 }
 @media all and (max-width:553px) {
@@ -179,7 +236,22 @@ padding: 10px;
         margin-bottom: 10px;      // 세로 간격 추가
     }
 }
-@media all and (max-width:420px){
+@media all and (max-width:430px){
+
+    .main_weather{
+        display: block;
+    }
+    .main_weather .left{
+        width:100%;
+    }
+    .main_weather .right #temperature, .location{
+        justify-content:center;
+    }
+    .weathers_box .left{
+        width: 100%;
+    }
+}
+@media all and (max-width:551px){
     // .sub_content{
     //     width:100%;
     // }
