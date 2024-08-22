@@ -61,8 +61,8 @@ const weatherService= new WeatherService();
     const feelsTemp=weatherData.main.feels_like;
     const humidity=weatherData.main.humidity;
     const wind = weatherData.wind.speed;
-     const rain=weatherData.rain["1h"];
-     const cloud=weatherData.clouds.all;
+    const rain=weatherData?.rain?.["1h"] ?? "정보 없음";
+    const cloud=weatherData.clouds.all;
     const maxTemp= weatherData.main.temp_max;
     const minTemp=weatherData.main.temp_min;
     const weatherIcon=weatherData.weather[0].icon;
@@ -92,7 +92,7 @@ const weatherService= new WeatherService();
     const jeonNdes=jeonNWeatherData.weather[0].description;
 
     /**강원도,서울 데이터 */
-    const seoul_temp=seoulData.main.temp;
+    // const seoul_temp=seoulData.main.temp;
 
       /**전북,전남 엘리먼트  */
     const tempEle=document.getElementById('jeonb');
@@ -108,7 +108,7 @@ const weatherService= new WeatherService();
     feelsEle&& (feelsEle.textContent=`${((feelsTemp)-273.15).toFixed(2)}도`)
     humEle&& (humEle.textContent=`${humidity}%`)
     windEle && (windEle.textContent=`${wind}m/s`)
-    rainEle && (rainEle.textContent=`${rain}mm`)
+    rainEle && (rainEle.textContent=`${rain}`)
     cloudEle && (cloudEle.textContent=`${cloud}`)
     minEle &&(minEle.textContent=`${(minTemp-273.15).toFixed(2)}도`)
     maxEle && (maxEle.textContent=`${(maxTemp-273.15).toFixed(2)}도`)
