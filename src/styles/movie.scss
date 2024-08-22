@@ -1,14 +1,11 @@
 @import "_reset";
 
 //미디어쿼리
-@media (max-width: 950px) {
-    .movie-container-inner {
-        max-height: 1150px;
-    }
-
+@media (max-width: 950vw) {
     .movie-container-inner {
         display: flex;
         flex-direction: column;
+        max-height: 1150vh;
     }
 
     .rec-movie-image {
@@ -16,19 +13,16 @@
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 500vw) {
     .movie-container-inner {
-        max-height: 2000px;
-    }
-
-    .movie-container-inner {
+        max-height: 2000vh;
         display: flex;
         flex-direction: column;
     }
 
     .rec-movie-image {
         display: flex;
-        max-width: 300px;
+        max-width: 300vw;
         width: 100%;
     }
 }
@@ -49,15 +43,15 @@
 .rec-movie-image {
     border-radius: 10px;
     object-fit: cover;
-    height: 450px;
+    height: 100%;
 }
 
-p {
+.rec-movie-detail {
     font-size: 20px;
     margin: 30px 0;
 }
 
-h2 {
+.movie-title {
     margin-top: 100px;
     padding-bottom: 30px;
     font-size: 30px;
@@ -92,7 +86,7 @@ h2 {
 
 .movie-image {
     border-radius: 10px;
-    height: 400px;
+    height: 100%;
 }
 
 .movie-list-detail li {

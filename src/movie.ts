@@ -59,17 +59,17 @@ function displayRecMovie(movie: Movie): void {
     const imageBaseUrl = "https://image.tmdb.org/t/p/w300";
 
     recMovieElement.innerHTML = `
-    <section class="movie-container-inner">
+    <div class="movie-container-inner">
         <div>
             <img src="${imageBaseUrl}${movie.poster_path}" alt="Recommended Movie" class="rec-movie-image"/>
         </div>
         <div>
-        <p>영화 제목 : ${movie.title}</p>
-        <p>영화 줄거리 : ${movie.overview}</p>
-        <p>개봉일자 : ${movie.release_date}</p>
-        <p>평점 : ${movie.vote_average}</p>
+        <p class="rec-movie-detail">영화 제목 : ${movie.title}</p>
+        <p class="rec-movie-detail">영화 줄거리 : ${movie.overview}</p>
+        <p class="rec-movie-detail">개봉일자 : ${movie.release_date}</p>
+        <p class="rec-movie-detail">평점 : ${movie.vote_average}</p>
         </div>
-    </section>
+    </div>
     `;
 }
 
@@ -147,34 +147,34 @@ async function disPlayMovie() {
 
 document.addEventListener("DOMContentLoaded", disPlayMovie);
 
-//버튼 이벤트
-document.addEventListener("DOMContentLoaded", () => {
-    function scrollMovies(container: HTMLElement, direction: "left" | "right") {
-        const scrollAmount = container.clientWidth;
-        container.scrollBy({
-            left: direction === "left" ? -scrollAmount : scrollAmount,
-            behavior: "smooth",
-        });
-    }
+// //버튼 이벤트
+// document.addEventListener("DOMContentLoaded", () => {
+//     function scrollMovies(container: HTMLElement, direction: "left" | "right") {
+//         const scrollAmount = container.clientWidth;
+//         container.scrollBy({
+//             left: direction === "left" ? -scrollAmount : scrollAmount,
+//             behavior: "smooth",
+//         });
+//     }
 
-    // 버튼 클릭 시 스크롤 이동 처리
-    document
-        .querySelectorAll(".movie-pager-prev, .movie-pager-next")
-        .forEach((button) => {
-            button.addEventListener("click", () => {
-                const section = button.closest("section");
-                const container = section?.querySelector(
-                    ".movie-list-detail"
-                ) as HTMLElement;
+//     // 버튼 클릭 시 스크롤 이동 처리
+//     document
+//         .querySelectorAll(".movie-pager-prev, .movie-pager-next")
+//         .forEach((button) => {
+//             button.addEventListener("click", () => {
+//                 const section = button.closest("section");
+//                 const container = section?.querySelector(
+//                     ".movie-list-detail"
+//                 ) as HTMLElement;
 
-                if (container) {
-                    const direction = button.classList.contains(
-                        "movie-pager-prev"
-                    )
-                        ? "left"
-                        : "right";
-                    scrollMovies(container, direction);
-                }
-            });
-        });
-});
+//                 if (container) {
+//                     const direction = button.classList.contains(
+//                         "movie-pager-prev"
+//                     )
+//                         ? "left"
+//                         : "right";
+//                     scrollMovies(container, direction);
+//                 }
+//             });
+//         });
+// });
