@@ -10,34 +10,34 @@
   <div id="tasks"></div>
 </div>
 
-<!-- 성공률 -->
-
-<!-- 타이머 -->
-<div id="timer-phomo">
-  <div class="timer-container">
-    <h4>pomodoro</h4>
-
-    <div class="painel">
-      <p id="work">work</p>
-      <p id="break">break</p>
-    </div>
-
-    <div class="timer">
-      <div class="circle">
-        <div class="time">
-          <p id="minutes"></p>
-          <p>:</p>
-          <p id="seconds"></p>
-        </div>
+<!-- 캘린더 만들기 -->
+<div class="calendar-container">
+  <div class="calendar">
+    <div class="calendar-header">
+      <span class="month-picker" id="month-picker">AUG</span>
+      <div class="year-picker" id="year-picker">
+        <span class="year-change" id="pre-year">
+          <button>⬅</button>
+        </span>
+        <span id="year">2024</span>
+        <span class="year-change" id="next-year">
+          <button>➡</button>
+        </span>
       </div>
     </div>
 
-    <div class="controls">
-      <button id="start" onclick="start()">
-        <i class="fa-solid fa-play"></i>
-      </button>
-
-      <a id="reset" href="./"><i class="fa-solid fa-arrow-rotate-left"></i></a>
+    <div class="calendar-body">
+      <div class="calendar-week-days">
+        <div>Sun</div>
+        <div>Mon</div>
+        <div>Tue</div>
+        <div>Wed</div>
+        <div>Thu</div>
+        <div>Fri</div>
+        <div>Sat</div>
+      </div>
+      <div class="calendar-days"></div>
     </div>
+    <div class="month-list"></div>
   </div>
 </div>
