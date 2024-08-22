@@ -2,6 +2,7 @@ import "./main";
 import "./styles/movie.scss";
 import { NowPlayingService } from "./api/services/nowpPlying.service";
 import { UpComingService } from "./api/services/upComing.service";
+import Swiper from "swiper";
 
 interface Movie {
     poster_path: string;
@@ -178,3 +179,19 @@ document.addEventListener("DOMContentLoaded", disPlayMovie);
 //             });
 //         });
 // });
+
+const swiper = new Swiper(".swiper", {
+    autoplay: true,
+    loop: true,
+    slidesPerGroup: 3,
+    direction: "horizontal",
+
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+
+    scrollbar: {
+        el: ".swiper-scrollbar",
+    },
+});
