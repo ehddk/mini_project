@@ -5,7 +5,7 @@ import { WeatherService } from "./api/services/weathers/weather.service";
 import "./main";
 import "./styles/weather.scss";
 
-const weatherService= new WeatherService();
+const weatherService = new WeatherService();
 //const midWeatherService=new MidWeatherService();
 const dustService= new DustService();
 

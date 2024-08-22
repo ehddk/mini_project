@@ -1,11 +1,44 @@
 @import "_reset";
 
+//미디어쿼리
+@media (max-width: 950px) {
+    .movie-container-inner {
+        max-height: 1150px;
+    }
+
+    .movie-container-inner {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .rec-movie-image {
+        display: flex;
+    }
+}
+
+@media (max-width: 500px) {
+    .movie-container-inner {
+        max-height: 2000px;
+    }
+
+    .movie-container-inner {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .rec-movie-image {
+        display: flex;
+        max-width: 300px;
+        width: 100%;
+    }
+}
+
 .movie-container-inner {
     display: flex;
     justify-content: center;
+    align-items: center;
     background: rgba(233, 201, 201, 0.1);
     border-radius: 10px;
-    margin-top: 30px;
 }
 
 .movie-container-inner div {
@@ -15,31 +48,26 @@
 
 .rec-movie-image {
     border-radius: 10px;
-}
-
-.today-rec-movie {
-    font-size: 20px;
-    font-weight: 500;
+    object-fit: cover;
+    height: 450px;
 }
 
 p {
-    margin-top: 20px;
-    padding-top: 15px;
-    display: block;
+    font-size: 20px;
+    margin: 30px 0;
 }
 
 h2 {
     margin-top: 100px;
-    font-size: 25px;
-    font-weight: 500;
+    padding-bottom: 30px;
+    font-size: 30px;
+    font-weight: bold;
 }
 
 .movie-list-nowplaying,
 .movie-list-upcoming {
-    position: relative;
     display: flex;
     align-items: center;
-    width: 100%;
     overflow: hidden;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
@@ -50,26 +78,30 @@ h2 {
     margin-top: 10px;
     border-radius: 10px;
     overflow: hidden;
+    padding: 20px 0;
 }
 
 .movie-pager-prev,
 .movie-pager-next {
     cursor: pointer;
-    font-size: 30px;
+    font-size: 40px;
     color: #ffffff;
-    padding: 0 5px;
+    padding: 20px 10px;
+    z-index: 1;
 }
 
 .movie-image {
     border-radius: 10px;
+    height: 400px;
 }
 
 .movie-list-detail li {
     margin: 15px;
     list-style: none;
+    transition: transform 0.3s ease;
 }
 
-.movie-list-detail li:hover,
-.rec-movie-image:hover {
+.movie-list-detail li:hover {
     transform: scale(1.1);
+    border-radius: 10px;
 }

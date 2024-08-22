@@ -8,6 +8,7 @@ interface Movie {
     title: string;
     overview: string;
     vote_average: number;
+    release_date: string;
 }
 
 interface MovieResponse {
@@ -38,13 +39,15 @@ async function fetchMovies() {
     };
 }
 
-// 랜덤으로 영화 선택
-function getRandomMovie(movies: Movie[]): Movie {
-    const randomIndex = Math.floor(Math.random() * movies.length);
-    return movies[randomIndex];
+// 추천 영화 표시
+function displaySavedRecMovie(): void {
+    const recMovie = localStorage.getItem("recommendedMovie");
+
+    if (recMovie) {
+        displayRecMovie(JSON.parse(recMovie));
+    }
 }
 
-// 추천 영화 표시
 function displayRecMovie(movie: Movie): void {
     const recMovieElement = document.querySelector(".today-rec-movie");
 
@@ -63,11 +66,17 @@ function displayRecMovie(movie: Movie): void {
         <div>
         <p>영화 제목 : ${movie.title}</p>
         <p>영화 줄거리 : ${movie.overview}</p>
+        <p>개봉일자 : ${movie.release_date}</p>
         <p>평점 : ${movie.vote_average}</p>
-
         </div>
     </section>
     `;
+}
+
+// 랜덤으로 영화 선택
+function getRandomMovie(movies: Movie[]): Movie {
+    const randomIndex = Math.floor(Math.random() * movies.length);
+    return movies[randomIndex];
 }
 
 // 랜덤 추천 영화 저장 및 업데이트
@@ -75,7 +84,6 @@ function updateRecMovie(movies: MovieResponse): void {
     const today = new Date().toDateString();
     const lastUpdatedDate = localStorage.getItem("recommendationDate");
 
-    // 매일 새로운 영화 업데이트
     if (lastUpdatedDate !== today) {
         const recMovie = getRandomMovie(movies.results);
         localStorage.setItem("recommendedMovie", JSON.stringify(recMovie));
@@ -83,25 +91,14 @@ function updateRecMovie(movies: MovieResponse): void {
     }
 }
 
-// 추천 영화 표시
-function displaySavedRecMovie(): void {
-    const recMovie = localStorage.getItem("recommendedMovie");
-
-    if (recMovie) {
-        displayRecMovie(JSON.parse(recMovie));
-    }
-}
-
 async function disPlayMovie() {
     try {
-        // 데이터 가져오기
         const fetchResult = await fetchMovies();
 
-        // 현재 상영 중인 영화와 개봉 예정 영화 추출
         const { getNowPlaying, getUpComing } = fetchResult;
 
-        console.log("Now Playing Movies:", getNowPlaying);
-        console.log("Upcoming Movies:", getUpComing);
+        // console.log("Now Playing Movies:", getNowPlaying);
+        // console.log("Upcoming Movies:", getUpComing);
 
         // 영화 리스트를 화면에 표시
         function movieLists(movies: MovieResponse, movieId: string): void {
@@ -139,7 +136,6 @@ async function disPlayMovie() {
         movieLists(getNowPlaying, "movie-list-nowplaying");
         movieLists(getUpComing, "movie-list-upcoming");
 
-        // 현재 상영중인 영화 중 1개 추천 영화로 표시
         if (getNowPlaying.results.length > 0) {
             updateRecMovie(getNowPlaying);
             displaySavedRecMovie();
@@ -150,3 +146,35 @@ async function disPlayMovie() {
 }
 
 document.addEventListener("DOMContentLoaded", disPlayMovie);
+
+//버튼 이벤트
+document.addEventListener("DOMContentLoaded", () => {
+    function scrollMovies(container: HTMLElement, direction: "left" | "right") {
+        const scrollAmount = container.clientWidth;
+        container.scrollBy({
+            left: direction === "left" ? -scrollAmount : scrollAmount,
+            behavior: "smooth",
+        });
+    }
+
+    // 버튼 클릭 시 스크롤 이동 처리
+    document
+        .querySelectorAll(".movie-pager-prev, .movie-pager-next")
+        .forEach((button) => {
+            button.addEventListener("click", () => {
+                const section = button.closest("section");
+                const container = section?.querySelector(
+                    ".movie-list-detail"
+                ) as HTMLElement;
+
+                if (container) {
+                    const direction = button.classList.contains(
+                        "movie-pager-prev"
+                    )
+                        ? "left"
+                        : "right";
+                    scrollMovies(container, direction);
+                }
+            });
+        });
+});
