@@ -57,15 +57,17 @@ function displayRecMovie(movie: Movie): void {
     }
 
     const imageBaseUrl = "https://image.tmdb.org/t/p/w300";
-
+    const overviewText = movie.overview ? movie.overview : "정보 없음";
     recMovieElement.innerHTML = `
     <div class="movie-container-inner">
         <div>
+        <a href="">
             <img src="${imageBaseUrl}${movie.poster_path}" alt="Recommended Movie" class="rec-movie-image"/>
+            </a>
         </div>
         <div>
         <p class="rec-movie-detail">영화 제목 : ${movie.title}</p>
-        <p class="rec-movie-detail">영화 줄거리 : ${movie.overview}</p>
+        <p class="rec-movie-detail">영화 줄거리 : ${overviewText}</p>
         <p class="rec-movie-detail">개봉일자 : ${movie.release_date}</p>
         <p class="rec-movie-detail">평점 : ${movie.vote_average}</p>
         </div>
@@ -91,16 +93,13 @@ function updateRecMovie(movies: MovieResponse): void {
     }
 }
 
+// 영화 리스트를 화면에 표시
 async function disPlayMovie() {
     try {
         const fetchResult = await fetchMovies();
 
         const { getNowPlaying, getUpComing } = fetchResult;
 
-        // console.log("Now Playing Movies:", getNowPlaying);
-        // console.log("Upcoming Movies:", getUpComing);
-
-        // 영화 리스트를 화면에 표시
         function movieLists(movies: MovieResponse, movieId: string): void {
             const container = document.getElementById(movieId);
 
@@ -120,23 +119,11 @@ async function disPlayMovie() {
 
             const imageBaseUrl = "https://image.tmdb.org/t/p/w300";
 
-            // 가영님 코드
-            // movies.results.forEach((movie) => {
-            //     const listItem = document.createElement("li");
-            //     listItem.innerHTML = `
-            //         <a href="#">
-            //             <div>
-            //                 <img src="${imageBaseUrl}${movie.poster_path}" alt="" class="movie-image"/>
-            //             </div>
-            //         </a>`;
-            //     listElement.appendChild(listItem);
-            // });
-
             movies.results.forEach((movie) => {
                 const listItem = document.createElement("a");
-                listItem.href= "#";
+                listItem.href = "#";
                 listItem.innerHTML = `
-                    <div>
+                    <div class="swiper-slide">
                         <img src="${imageBaseUrl}${movie.poster_path}" alt="" class="movie-image"/>
                     </div>
                     `;
@@ -144,7 +131,6 @@ async function disPlayMovie() {
             });
         }
 
-        // 현재 상영 중인 영화와 개봉 예정 영화 화면에 표시
         movieLists(getNowPlaying, "movie-list-nowplaying");
         movieLists(getUpComing, "movie-list-upcoming");
 
@@ -159,40 +145,10 @@ async function disPlayMovie() {
 
 document.addEventListener("DOMContentLoaded", disPlayMovie);
 
-// //버튼 이벤트
-// document.addEventListener("DOMContentLoaded", () => {
-//     function scrollMovies(container: HTMLElement, direction: "left" | "right") {
-//         const scrollAmount = container.clientWidth;
-//         container.scrollBy({
-//             left: direction === "left" ? -scrollAmount : scrollAmount,
-//             behavior: "smooth",
-//         });
-//     }
-
-//     // 버튼 클릭 시 스크롤 이동 처리
-//     document
-//         .querySelectorAll(".movie-pager-prev, .movie-pager-next")
-//         .forEach((button) => {
-//             button.addEventListener("click", () => {
-//                 const section = button.closest("section");
-//                 const container = section?.querySelector(
-//                     ".movie-list-detail"
-//                 ) as HTMLElement;
-
-//                 if (container) {
-//                     const direction = button.classList.contains(
-//                         "movie-pager-prev"
-//                     )
-//                         ? "left"
-//                         : "right";
-//                     scrollMovies(container, direction);
-//                 }
-//             });
-//         });
-// });
+/**스와이퍼*/
 
 const swiper = new Swiper(".swiper", {
-    autoplay: false,
+    slidesPerView: "auto",
     loop: true,
     slidesPerGroup: 3,
     direction: "horizontal",
