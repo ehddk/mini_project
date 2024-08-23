@@ -62,14 +62,14 @@ const dustService= new DustService();
         InformCode: 'PM10'
     }
 })  
+console.log('dust',dustData);
 
     /**미세먼지 데이터 */
    const dust=dustData.response.body.items[0]?.informCause;
-  const dustInform=dustData.response.body.items[0]?.informOverall;
-  const dustEle=document.getElementById('dust');
+   const dustInform=dustData.response.body.items[0]?.informOverall;
+   const dustEle=document.getElementById('dust');
    const informEle=document.getElementById('inform');
    
-   dustEle && (dustEle.textContent=`${dust}`);
    dustEle && (dustEle.textContent=`${dust}`);
    informEle &&(informEle.textContent=`${dustInform}`);
 
@@ -92,7 +92,7 @@ const dustService= new DustService();
     const feelsEle = document.getElementById("feelsTemp");
     const humEle = document.getElementById('humidity');
     const windEle=document.getElementById('wind');
-    const iconEle=document.getElementById('mainIcon');
+    const iconEle=document.getElementById('mainIcon') as HTMLImageElement | null;
     const rainEle=document.getElementById('rain');
     const cloudEle = document.getElementById('cloud')
     const minEle=document.getElementById('minTemp');
@@ -123,17 +123,17 @@ const dustService= new DustService();
     const seoulEle=document.getElementById('seoul');
     const gangwonDes=document.getElementById('gangDes');
     const seoulDes=document.getElementById('seoulDes');
-    const seoulIcon=document.getElementById('seoul_icon');
-    const gangIcon=document.getElementById('gang_icon');
+    const seoulIcon=document.getElementById('seoul_icon') as HTMLImageElement | null;
+    const gangIcon=document.getElementById('gang_icon') as HTMLImageElement | null;
     const seoulAdrs=`http://openweathermap.org/img/wn/${seoul_icon}@2x.png`;
     const gangAdrs=`http://openweathermap.org/img/wn/${gang_icon}@2x.png`;
 
       /**전북,전남 엘리먼트  */
     const tempEle=document.getElementById('jeonb');
-    const area1_icon=document.getElementById('jeonb_icon')
+    const area1_icon=document.getElementById('jeonb_icon') as HTMLImageElement | null;
     const desEle=document.getElementById('description')
     const jeonNEle=document.getElementById('jeonN');
-    const jeonNIcon=document.getElementById('jeonN_icon')
+    const jeonNIcon=document.getElementById('jeonN_icon') as HTMLImageElement | null;
     const jeonNDes=document.getElementById('jeonDes')
     const jeonNIconAdrs=`http://openweathermap.org/img/wn/${jeonN_icon}@2x.png`;
 
@@ -171,7 +171,7 @@ const dustService= new DustService();
 
     const messageEle = document.getElementById('message'); // 문구를 표시할 엘리먼트
 
-    const calcTemp = (temperature - 273.15).toFixed(2);
+    const calcTemp = parseInt((temperature - 273.15).toFixed(2));
     switch (true) {
         case calcTemp > 30:
             messageEle && (messageEle.textContent = '폭염 조심하세요!');
