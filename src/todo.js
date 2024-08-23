@@ -292,6 +292,8 @@ addEventSubmit.addEventListener("click", () => {
     return;
   }
 
+  localStorage.setItem('todo', eventTitle);
+
   const timeFromArr = eventTimeFrom.split(":");
   const timeToArr = eventTimeTo.split(":");
   if (

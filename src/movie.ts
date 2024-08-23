@@ -120,14 +120,26 @@ async function disPlayMovie() {
 
             const imageBaseUrl = "https://image.tmdb.org/t/p/w300";
 
+            // 가영님 코드
+            // movies.results.forEach((movie) => {
+            //     const listItem = document.createElement("li");
+            //     listItem.innerHTML = `
+            //         <a href="#">
+            //             <div>
+            //                 <img src="${imageBaseUrl}${movie.poster_path}" alt="" class="movie-image"/>
+            //             </div>
+            //         </a>`;
+            //     listElement.appendChild(listItem);
+            // });
+
             movies.results.forEach((movie) => {
-                const listItem = document.createElement("li");
+                const listItem = document.createElement("a");
+                listItem.href= "#";
                 listItem.innerHTML = `
-                    <a href="#">
-                        <div>
-                            <img src="${imageBaseUrl}${movie.poster_path}" alt="" class="movie-image"/>
-                        </div>
-                    </a>`;
+                    <div>
+                        <img src="${imageBaseUrl}${movie.poster_path}" alt="" class="movie-image"/>
+                    </div>
+                    `;
                 listElement.appendChild(listItem);
             });
         }
@@ -178,3 +190,19 @@ document.addEventListener("DOMContentLoaded", disPlayMovie);
 //             });
 //         });
 // });
+
+const swiper = new Swiper(".swiper", {
+    autoplay: false,
+    loop: true,
+    slidesPerGroup: 3,
+    direction: "horizontal",
+
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+
+    scrollbar: {
+        el: ".swiper-scrollbar",
+    },
+});
