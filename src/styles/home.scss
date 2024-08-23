@@ -1,26 +1,84 @@
 @import "_reset";
 
-.home-container{display:flex; flex-direction: column; margin-top:50px; gap:50px;}
-.home-container .inner{padding:20px; background: rgba(255, 255, 255, 0.1); border-radius: 20px;
+.home-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  gap: 50px;
+}
+.home-container .inner {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
 }
 
 // 날씨 //
-.home-container .weather{display: flex; flex-direction: column; gap:30px;}
-.home-container .weather > h2{font-size:25px; font-weight: 400;}
-.home-container .weather .icon{margin:20px 0;}
-.home-container .weather .icon i{font-size: 40vw;}
-.home-container .weather .content-box{display:flex; flex-direction: row; justify-content: center; gap:30px;}
-.home-container .weather .content-box .content{display:flex; flex-direction: column; justify-content: center; align-items: center; gap:30px}
-.home-container .weather .content-box .content .top{display:flex; flex-direction: column; align-items: center;}
-.home-container .weather .content-box .content .top .city{font-size:40px; font-weight: 600;}
-.home-container .weather .content-box .content .top .current_temp{font-size:40px; font-weight: 600;}
-.home-container .weather .content-box .content .bot{list-style: none; display:flex; flex-wrap: wrap;}
-.home-container .weather .content-box .content .bot li{flex-basis: 50%;}
+.home-container .weather {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.home-container .weather > h2 {
+  font-size: 25px;
+  font-weight: 400;
+}
+.home-container .weather .icon {
+  margin: 20px 0;
+}
+.home-container .weather .icon i {
+  font-size: 40vw;
+}
+.home-container .weather .content-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 30px;
+}
+.home-container .weather .content-box .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+.home-container .weather .content-box .content .top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.home-container .weather .content-box .content .top .city {
+  font-size: 40px;
+  font-weight: 600;
+}
+.home-container .weather .content-box .content .top .current_temp {
+  font-size: 40px;
+  font-weight: 600;
+}
+.home-container .weather .content-box .content .bot {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+.home-container .weather .content-box .content .bot li {
+  flex-basis: 50%;
+}
 
 // 투두리스트 //
-.todo span{display:block; width:100px; height:100px; margin:0 auto; background-color: #fff; border-radius: 50%;}
-.todo p{text-align: center; margin-top:20px;}
+.todo span {
+  display: block;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 50%;
+}
+.todo p {
+  text-align: center;
+  margin-top: 20px;
+}
 
 // 영화 //
-.home-container .movie{}
-.home-container .movie .movie-box{}
+.home-container .movie {
+}
+.home-container .movie .movie-box {
+}
