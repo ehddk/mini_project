@@ -1,7 +1,15 @@
 @import "_reset";
 
-.home-container{display:flex; flex-direction: column; margin-top:50px; gap:50px;}
-.home-container .inner{padding:20px; background: rgba(255, 255, 255, 0.1); border-radius: 20px;
+.home-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  gap: 50px;
+}
+.home-container .inner {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
 }
 
 // 날씨 //
@@ -36,8 +44,3 @@
         gap:0;
     }
 }
-
-
-// 영화 //
-.home-container .movie{}
-.home-container .movie .movie-box{}

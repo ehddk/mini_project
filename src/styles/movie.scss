@@ -56,19 +56,30 @@
 .movie-list-detail {
     display: flex;
     border-radius: 10px;
-    padding: 30px 20px;
-    gap: 30px;
+    padding: 30px 10px;
+    gap: 20px;
     list-style: none;
     transition: transform 0.3s ease;
-}
-
-.swiper-slide {
-    display: flex;
 }
 
 .movie-image {
     border-radius: 10px;
     height: 450px;
+}
+
+.movie-image:hover,
+.rec-movie-image:hover {
+    transform: scale(1.1);
+}
+
+.swiper-wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    display: flex;
+    width: auto;
 }
 
 .swiper-button-prev,
@@ -77,9 +88,4 @@
     font-size: 40px;
     font-weight: 700;
     color: #ffffff;
-}
-
-.movie-image:hover,
-.rec-movie-image:hover {
-    transform: scale(1.1);
 }
