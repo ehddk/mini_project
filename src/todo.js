@@ -198,14 +198,14 @@ gotoBtn.addEventListener("click", gotoDate);
 function gotoDate() {
   const dateArr = dateInput.value.split("/");
   if (dateArr.length === 2) {
-    if (dateArr[1] > 0 && dateArr[1] < 13 && dateArr[0].length === 4) {
-      month = dateArr[0];
-      year = dateArr[1] - 1;
+    if (dateArr[0] > 0 && dateArr[0] < 13 && dateArr[1].length === 4) {
+      month = dateArr[0] - 1;
+      year = dateArr[1];
       initCalendar();
       return;
     }
   }
-  alert("Invalid Date");
+  alert("그런 날짜는 없어요");
 }
 
 function getActiveDay(date) {
@@ -238,7 +238,7 @@ function updateEvents(date) {
   });
   if (events === "") {
     events = `<div class="no-event">
-            <h3>No Events</h3>
+            <h3>우측 상단 + 눌러서 할 일 추가 !</h3>
         </div>`;
   }
   eventsContainer.innerHTML = events;
@@ -302,7 +302,7 @@ addEventSubmit.addEventListener("click", () => {
     timeToArr[0] > 23 ||
     timeToArr[1] > 59
   ) {
-    alert("Invalid Time Format");
+    alert("다시 잘 입력하세요");
     return;
   }
 
