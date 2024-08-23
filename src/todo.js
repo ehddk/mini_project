@@ -235,10 +235,11 @@ function updateEvents(date) {
         </div>`;
       });
     }
+    eventsContainer.innerHTML = events;
   });
   if (events === "") {
     events = `<div class="no-event">
-            <h3>우측 상단 + 눌러서 할 일 추가 !</h3>
+        <h3>우측 상단 + 눌러서 할 일 추가 !</h3>
         </div>`;
   }
   eventsContainer.innerHTML = events;
@@ -292,7 +293,13 @@ addEventSubmit.addEventListener("click", () => {
     return;
   }
 
-  localStorage.setItem('todo', eventTitle);
+  //현재 날짜
+  const currentDay = `${year}-${month+1}-${activeDay}`;
+ 
+  //localstorage.setItem(key,value);
+  //할일 등록하면 localstorage에 저장.
+  localStorage.setItem('todo', JSON.stringify(eventsArr))
+ 
 
   const timeFromArr = eventTimeFrom.split(":");
   const timeToArr = eventTimeTo.split(":");
@@ -311,6 +318,7 @@ addEventSubmit.addEventListener("click", () => {
   const timeFrom = convertTime(eventTimeFrom);
   const timeTo = convertTime(eventTimeTo);
 
+ 
   let eventExist = false;
   eventsArr.forEach((event) => {
     if (
@@ -333,8 +341,12 @@ addEventSubmit.addEventListener("click", () => {
     title: eventTitle,
     time: timeFrom + " - " + timeTo,
   };
+
+  // const storedData=localStorage.getItem(currentDay) || [];
+  // localStorage.setItem(currentDay,JSON.stringify(storedData));
+
   console.log(newEvent);
-  console.log(activeDay);
+  console.log('???',activeDay);
   let eventAdded = false;
   if (eventsArr.length > 0) {
     eventsArr.forEach((item) => {
@@ -358,7 +370,7 @@ addEventSubmit.addEventListener("click", () => {
     });
   }
 
-  console.log(eventsArr);
+ saveEvents();
   addEventWrapper.classList.remove("active");
   addEventTitle.value = "";
   addEventFrom.value = "";
@@ -375,17 +387,23 @@ eventsContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("event")) {
     if (confirm("정말 다했나요??")) {
       const eventTitle = e.target.children[0].children[1].innerHTML;
+      
+      //eventsArr배열에서 해당 event 삭제해야함.
       eventsArr.forEach((event) => {
         if (
           event.day === activeDay &&
           event.month === month + 1 &&
           event.year === year
         ) {
-          event.events.forEach((item, index) => {
-            if (item.title === eventTitle) {
-              event.events.splice(index, 1);
-            }
-          });
+          // event.events.forEach((item, index) => {
+          //   if (item.title === eventTitle) {
+          //     //이벤트 배열에서 해당 이벤트 제거
+          //     event.events.splice(index, 1);
+          //   }
+          // });
+          console.log('event.events',event.events) //내가 '확인'을 누른 '할일'의 정보가 나옴.
+          //처음에 localstorage.removeItem했더니 싹다 지워져서 ,,,이게 아니였음.
+          event.events = event.events.filter(item => item.title !==eventTitle); //내가 완료한 할 일의 title과 내가 막 등록한 할일의 title이 같지 않는 것만 나오게. 내가 완료한 할 일은 이미 완료되서 화면에 나오면 안되니까!!
 
           if (event.events.length === 0) {
             eventsArr.splice(eventsArr.indexOf(event), 1);
@@ -397,6 +415,8 @@ eventsContainer.addEventListener("click", (e) => {
           }
         }
       });
+// localStorage.setItem('todo',JSON.stringify(eventsArr))
+     // saveEvents();
       updateEvents(activeDay);
     }
   }
@@ -404,13 +424,14 @@ eventsContainer.addEventListener("click", (e) => {
 
 function saveEvents() {
   localStorage.setItem("events", JSON.stringify(eventsArr));
+  localStorage.setItem("todo", JSON.stringify(eventsArr));
 }
 
 function getEvents() {
-  if (localStorage.getItem("events") === null) {
-    return;
+  const storedEvents = localStorage.getItem("events");
+  if(storedEvents){
+    eventsArr.push(...JSON.parse(storedEvents));
   }
-  eventsArr.push(...JSON.parse(localStorage.getItem("events")));
 }
 
 function convertTime(time) {
@@ -422,3 +443,4 @@ function convertTime(time) {
   time = timeHour + ":" + timeMin + " " + timeFormat;
   return time;
 }
+
