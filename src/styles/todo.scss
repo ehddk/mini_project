@@ -1,7 +1,6 @@
 @import "_reset";
 
 .todo-container {
-
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -23,7 +22,6 @@
 .left {
   width: 100%;
   background-color: rgba(255, 255, 255, 0.1);
-
 }
 
 .right {
@@ -164,6 +162,7 @@
   background: linear-gradient(90deg, #3f4458, transparent);
   cursor: pointer;
   padding: 5px;
+  border: 1px solid red;
 }
 
 .events .event .title {
@@ -269,8 +268,10 @@
   justify-content: center;
   align-items: center;
   padding: 10px;
+  gap: 10px;
 }
 
+.add-event-footer .add-event-btn-reset,
 .add-event-footer .add-event-btn {
   padding: 0 15px;
   height: 40px;
@@ -281,7 +282,7 @@
   border-radius: 5px;
   cursor: pointer;
 }
-
+.add-event-footer .add-event-btn-reset:hover,
 .add-event-footer .add-event-btn:hover {
   background-color: violet;
   color: white;
@@ -323,5 +324,4 @@
 }
 
 @media (max-width: 800px) {
-  
 }
