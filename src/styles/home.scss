@@ -20,6 +20,23 @@
 // 투두리스트 //
 .todo span{display:block; width:100px; height:100px; margin:0 auto; background-color: #fff; border-radius: 50%;}
 .todo p{text-align: center; margin-top:20px;}
+.todo .todo_list{
+    display: flex;
+    padding:1.5rem;
+}
+.todo #todo_task{
+    display: flex;
+    flex-wrap:wrap;
+    margin: 0 auto;
+    gap:50px;
+    @media (max-width:657px){
+        display: flex;
+        flex-direction: column;
+        margin:0;
+        gap:0;
+    }
+}
+
 
 // 영화 //
 .home-container .movie{}
