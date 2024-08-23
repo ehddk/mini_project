@@ -3,6 +3,10 @@
 .util_menu{
     display:flex;
     gap:20px;
+    @media all and (max-width:845px){
+        display:flex; 
+        flex-wrap: wrap;
+    }
 }
 .util_menu .list{
     list-style: none;
@@ -12,6 +16,10 @@
     border-radius: 20px;
     display: flex;
   justify-content: center;
+  @media all and (max-width:845px){
+    flex-grow: 1;
+  }
+
 }
 .util_menu .list .temp{
     width:100px;
@@ -28,6 +36,9 @@
     display: flex;
     justify-content: flex-end;
     gap:10px;
+    @media(max-width:430px){
+        justify-content: center;
+    }
 }
 .location #city{
     font-weight: 200;
@@ -37,18 +48,17 @@
 }
 .main_weather{
    display: flex;
-    margin-top:20px;
+   margin-top:20px;
+   padding:10px;
+    @media all and (max-width:430px){
+        display: block;
+    }
 }
 .main_weather .left{
-    width:50%;
+    width:100%;
 }
 .main_weather .left > h1{
     font-size:40px;
-}
-.main_weather .right{
-    padding:30px;
-
-   // background:rgba(255, 255, 255, 0.1);
 }
 
 .main_weather #dust, #inform{
@@ -77,11 +87,12 @@
 .main_weather #temperature{
     display: flex;
     justify-content: flex-end;
-    font-size:5vw
+    font-size:5vw;
+    @media (max-width:430px){
+        justify-content: center;
+    }
 }
-// .main_weather .icon p{
-//     margin-bottom:-10px;
-// }
+
 .main_weather #mainIcon {
     width:25vw;
     
@@ -93,12 +104,28 @@
     gap:50px;
     justify-content: center;
     padding:20px;
+    @media all and (max-width:610px){
+        display: flex;
+        flex-wrap: wrap;
+    }
+    @media all and (max-width:553px) {
+        display: flex;
+        flex-wrap: wrap;
+    }
 }
 .sub_content{
     width:100px;
     height:100px;
     background: rgba(255, 255, 255, 0.1);
     border-radius:10px;
+    @media (max-width:610px){
+        width: 200px;
+    }
+    @media (max-width:553px) {
+        width: calc(50% - 10px);  // 두 개씩 배치되도록 너비 조정
+        margin-bottom: 10px;      // 세로 간격 추가
+    }
+    
 
 }
 .sub_content div{
@@ -124,6 +151,7 @@
     justify-content: flex-end;
     font-size:12px;
     color:lightgray;
+    padding:10px;
 }
 .weather_list {
     width: 100%;
@@ -152,16 +180,14 @@
 
     display: flex;
     flex-wrap: wrap;
-    gap:30px;
+    gap:20px;
     width: 100%;
     margin-top:30px;
-// justify-content: center;
-
-
 }
+
 .weathers_box {
     list-style: none;
-    width:45%;
+    width:calc(50% - 10px);
     //height:150px;
     padding:0.4rem;
     background: rgba(255, 255, 255, 0.1);
@@ -169,19 +195,34 @@
 .weathers_box .content{
     display:flex;
     height: 100%;
-    padding:1rem;
+    padding:.5rem;
+    @media (max-width:530px){
+        display: flex;
+        flex-direction: column;
+        padding:0;
+    }
 }
 .weathers_box .left{
-display: flex;
-flex-direction: column;
-width: 50%;
-padding: 10px;
-
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding: 10px;
+    @media (max-width:530px){
+        display: flex;
+        flex-direction: column;
+        width:100%;
+    }
 }
 .weathers_box .right{
     margin: 0 auto;
 }
-
+.weathers_box .content .top, .down{
+    @media (max-width: 530px){
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
 
 .max{
     color:red;
@@ -193,75 +234,12 @@ padding: 10px;
 #message{
     font-size:15px;
 }
-/*반응형 미디어 쿼리*/
-@media all and (max-width:610px){
 
-    .sub_weather{
-        display:flex; 
-        flex-wrap: wrap;
-  
-    }
-    .sub_content{
-       width:200px;
-    }
-}
+
 @media all and (max-width:845px){
-    // .sub_weather{
-    //     display:flex; 
-    //     flex-wrap: wrap;
-
-    // }
     #dust{
         display:flex; 
        flex-wrap: wrap;
     }
-    .util_menu{
-        display:flex; 
-        flex-wrap: wrap;
-        
-    }
-    .util_menu .list{
-        flex-grow: 1;
- 
-    }
 }
-@media all and (max-width:553px) {
-    .sub_weather{
-        display: flex;
-        flex-wrap: wrap;
-      //  justify-content: space-between;
-    }
-    .sub_content {
-        width: calc(50% - 10px);  // 두 개씩 배치되도록 너비 조정
-        margin-bottom: 10px;      // 세로 간격 추가
-    }
-}
-@media all and (max-width:430px){
 
-    .main_weather{
-        display: block;
-    }
-    .main_weather .left{
-        width:100%;
-    }
-    .main_weather .right #temperature, .location{
-        justify-content:center;
-    }
-    .weathers_box .left{
-        width: 100%;
-    }
-}
-@media all and (max-width:551px){
-    // .sub_content{
-    //     width:100%;
-    // }
-    .weathers_box .content{
-        display: flex;
-        flex-direction: column;
-       
-     
-    }
-    .weathers_box{
-
-    }
-}
