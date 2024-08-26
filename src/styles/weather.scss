@@ -244,3 +244,22 @@
     }
 }
 
+
+.text-wrapper{
+    word-spacing: 2px;
+    overflow: hidden;
+}
+
+.text{
+    display: inline-block;
+    font-size:25px;
+    animation: reveal 1s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+@keyframes reveal {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
