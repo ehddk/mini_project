@@ -66,8 +66,8 @@ function displayRecMovie(movie: Movie): void {
             </a>
         </div>
         <div>
-        <p class="rec-movie-detail">영화 제목 : ${movie.title}</p>
-        <p class="rec-movie-detail">영화 줄거리 : ${overviewText}</p>
+        <p class="rec-movie-detail title">${movie.title}</p>
+        <p class="rec-movie-detail">${overviewText}</p>
         <p class="rec-movie-detail">개봉일자 : ${movie.release_date}</p>
         <p class="rec-movie-detail">평점 : ${movie.vote_average}</p>
         </div>
@@ -97,37 +97,25 @@ function updateRecMovie(movies: MovieResponse): void {
 async function disPlayMovie() {
     try {
         const fetchResult = await fetchMovies();
-
         const { getNowPlaying, getUpComing } = fetchResult;
-
         function movieLists(movies: MovieResponse, movieId: string): void {
             const container = document.getElementById(movieId);
-
             if (!container) {
                 console.error(`No element found with ID: ${movieId}`);
                 return;
             }
-
-            const listElement = container.querySelector(".movie-list-detail");
-
-            if (!listElement) {
-                console.error(
-                    `No element found with class 'movie-list-detail' inside ID: ${movieId}`
-                );
-                return;
-            }
-
+            const listElement = container;
             const imageBaseUrl = "https://image.tmdb.org/t/p/w300";
-
             movies.results.forEach((movie) => {
-                const listItem = document.createElement("a");
-                listItem.href = "#";
-                listItem.innerHTML = `
-                    <div class="swiper-slide">
-                        <img src="${imageBaseUrl}${movie.poster_path}" alt="" class="movie-image"/>
-                    </div>
+                if (movie.poster_path) {
+                    const listItem = document.createElement("div");
+                    listItem.classList.add("swiper-slide");
+                    const posterUrl = `${imageBaseUrl}${movie.poster_path}`;
+                    listItem.innerHTML = `
+                        <img src="${posterUrl}" alt="${movie.title}" class="movie-image"/>
                     `;
-                listElement.appendChild(listItem);
+                    listElement.appendChild(listItem);
+                }
             });
         }
 
@@ -146,11 +134,13 @@ async function disPlayMovie() {
 document.addEventListener("DOMContentLoaded", disPlayMovie);
 
 /**스와이퍼*/
-
 if ((window as any).Swiper) {
-    const swiper = new (window as any).Swiper(".swipe-wrapper", {
+    const swiper = new (window as any).Swiper(".swiper", {
+        observer: true,
+        observeParents: true,
+        spaceBetween: 25,
         slidesPerView: "auto",
-        loop: true,
+        loop: false,
         direction: "horizontal",
         slidesPerGroup: 3,
 
