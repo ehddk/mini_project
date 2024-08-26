@@ -9,7 +9,6 @@
   padding: 10px;
   color: #fff;
   border-radius: 10px;
-
   background-color: rgba(255, 255, 255, 0.1);
   overflow: hidden;
 }
@@ -28,6 +27,18 @@
   width: 100%;
   background-color: rgba(255, 255, 255, 0.1);
   margin-top: 20px;
+}
+.fa-solid {
+  cursor: pointer;
+  color: white;
+  font-size: 20px;
+  transition: 0.5s all;
+}
+
+.fa-solid:hover {
+  cursor: pointer;
+  color: rgb(255, 103, 103);
+  transform: scale(1.1);
 }
 
 .calendar {
@@ -190,12 +201,28 @@
   margin-left: 20px;
   position: relative;
 }
+
+.edit-input {
+  border: 1px blue solid;
+  border: none;
+  outline: none;
+  margin-left: 15px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  width: 100%;
+  max-width: 80%;
+  font-size: 17px;
+  border-radius: 10px;
+  text-align: start;
+  padding: 3px 0px 3px 10px;
+}
 .events .event .tools {
   display: flex;
   gap: 0.5rem;
   justify-content: space-between;
   align-items: center;
   transform: rotate();
+  position: relative;
 }
 .events .event .tools .check:hover {
   color: rgb(255, 103, 103);
@@ -211,21 +238,11 @@
 }
 .save-edit {
   color: white;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
 }
 .save-edit:hover {
   color: rgb(255, 103, 103);
   cursor: pointer;
-}
-
-.edit-input {
-  border: none;
-  outline: none;
-  margin-left: 0.5rem;
-  background-color: rgba(255, 255, 255, 0.1);
-  color: white;
-  width: 100%;
-  max-width: 80%;
 }
 
 .events .no-event {
