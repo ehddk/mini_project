@@ -2,7 +2,7 @@
 
 
 // 날씨 api - fontawesome 아이콘
-var weatherIcon = {
+var weatherIcon: { [key: string]: string } = {
     '01' : 'fas fa-sun',
     '02' : 'fas fa-cloud-sun',
     '03' : 'fas fa-cloud',
@@ -14,36 +14,43 @@ var weatherIcon = {
     '50' : 'fas fa-smog'
 };
 
-// OpenWeatherMap API 키
-const apiKey = "c33a21799543cf7c08f96007d18f8add";
+// API 응답의 타입을 정의합니다.
+interface WeatherResponse {
+    weather: { icon: string }[];
+    main: { temp: number; humidity: number; temp_min: number; temp_max: number };
+    wind: { speed: number };
+    name: string;
+    clouds: { all: number };
+}
 
 // 위치 정보를 받아오는 함수
-function getWeatherByLocation(lat, lon) {
+function getWeatherByLocation(lat: number, lon: number): void {
+    const apiKey = "c33a21799543cf7c08f96007d18f8add"; // 실제 API 키로 교체하세요.
     const apiURI = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
 
     fetch(apiURI)
         .then(response => response.json())
-        .then(resp => {
-            var Icon = resp.weather[0].icon.substr(0, 2);
-            var Temp = Math.floor(resp.main.temp - 273.15) + 'º';
-            var humidity = '습도&nbsp;&nbsp;&nbsp;&nbsp;' + resp.main.humidity + ' %';
-            var wind = '바람&nbsp;&nbsp;&nbsp;&nbsp;' + resp.wind.speed + ' m/s';
-            var city = resp.name;  // 도시 이름은 API로부터 받아옵니다
-            var cloud = '구름&nbsp;&nbsp;&nbsp;&nbsp;' + resp.clouds.all + "%";
-            var temp_min = '최저 온도&nbsp;&nbsp;&nbsp;&nbsp;' + Math.floor(resp.main.temp_min - 273.15) + 'º';
-            var temp_max = '최고 온도&nbsp;&nbsp;&nbsp;&nbsp;' + Math.floor(resp.main.temp_max - 273.15) + 'º';
+        .then((resp: WeatherResponse) => {
+            const Icon = resp.weather[0].icon.substr(0, 2);
+            const Temp = Math.floor(resp.main.temp - 273.15) + 'º';
+            const humidity = '습도&nbsp;&nbsp;&nbsp;&nbsp;' + resp.main.humidity + ' %';
+            const wind = '바람&nbsp;&nbsp;&nbsp;&nbsp;' + resp.wind.speed + ' m/s';
+            const city = resp.name;
+            const cloud = '구름&nbsp;&nbsp;&nbsp;&nbsp;' + resp.clouds.all + "%";
+            const temp_min = '최저 온도&nbsp;&nbsp;&nbsp;&nbsp;' + Math.floor(resp.main.temp_min - 273.15) + 'º';
+            const temp_max = '최고 온도&nbsp;&nbsp;&nbsp;&nbsp;' + Math.floor(resp.main.temp_max - 273.15) + 'º';
 
-            // DOM 요소에 데이터를 추가하는 부분
-            document.querySelector('.weather .icon').innerHTML = '<i class="' + weatherIcon[Icon] + '" ></i>';
-            document.querySelector('.current_temp').textContent = Temp;
-            document.querySelector('.humidity').innerHTML = humidity;
-            document.querySelector('.wind').innerHTML = wind;
-            document.querySelector('.city').textContent = city;
-            document.querySelector('.cloud').innerHTML = cloud;
-            document.querySelector('.temp_min').innerHTML = temp_min;
-            document.querySelector('.temp_max').innerHTML = temp_max;
+            // DOM 업데이트 부분
+            document.querySelector('.weather .icon')!.innerHTML = '<i class="' + weatherIcon[Icon] + '" ></i>';
+            document.querySelector('.current_temp')!.textContent = Temp;
+            document.querySelector('.humidity')!.innerHTML = humidity;
+            document.querySelector('.wind')!.innerHTML = wind;
+            document.querySelector('.city')!.textContent = city;
+            document.querySelector('.cloud')!.innerHTML = cloud;
+            document.querySelector('.temp_min')!.innerHTML = temp_min;
+            document.querySelector('.temp_max')!.innerHTML = temp_max;
         })
-        .catch(error => console.error('Error fetching weather data:', error));
+        .catch(error => console.error('날씨 데이터를 불러오는 중 오류 발생:', error));
 }
 
 // 사용자의 현재 위치를 받아오는 함수
