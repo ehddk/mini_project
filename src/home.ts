@@ -16,12 +16,12 @@ const filteredTodos = todos.find(
   }
 );
 
-const eventList = filteredTodos.events;
+const eventList = filteredTodos?.events;
 
-const titles = eventList.map((event: any) => `<li>${event.title}</li>`);
+const titles = eventList?.map((event: any) => `<li>${event.title}</li>`);
 
 todoEle &&
   (todoEle.innerHTML =
-    titles.length > 0
+    titles?.length > 0
       ? titles.join("\n") // title이 있을 때
       : "등록된 할 일이 없습니다."); // title이 없을 때
