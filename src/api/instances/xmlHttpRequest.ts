@@ -116,10 +116,9 @@ async function patch<Res, Req = unknown>(
 
 async function deleteRequest<Res, Req = unknown>(
   url: string,
-  body?: Req,
   headers: { [key: string]: any } = {}
 ) {
-  const response = await request<Res, undefined>({
+  const response = await request<Res, Req>({
     url,
     headers,
     method: "DELETE",

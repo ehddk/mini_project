@@ -228,21 +228,25 @@ function updateEvents(date) {
     ) {
       event.events.forEach((event) => {
         events += `<div class="event">
-            <div class="title">
-              <i class="fas fa-circle"></i>
-              <h3 class="event-title">${event.title}</h3>
-            </div>
-            <div class="event-time">
-              <span class="event-time">${event.time}</span>
-            </div>
-        </div>`;
+        <div class="title">
+          <i class="fas fa-circle"></i>
+          <h3 class="event-title">${event.title}</h3>
+        </div>
+        <div class ="tools">
+        <span class="check">✔</span>  
+        <span class="edit">🖋️</span> 
+        <div class="event-time">
+          <span class="event-time">${event.time}</span>
+        </div>
+        </div>
+    </div>`;
       });
     }
     eventsContainer.innerHTML = events;
   });
   if (events === "") {
     events = `<div class="no-event">
-        <h3>우측 상단 + 눌러서 할 일 추가 !</h3>
+        <h3>+ 눌러서 할 일 추가</h3>
         </div>`;
   }
   eventsContainer.innerHTML = events;
@@ -418,11 +422,87 @@ eventsContainer.addEventListener("click", (e) => {
           }
         }
       });
-      // localStorage.setItem('todo',JSON.stringify(eventsArr))
-      // saveEvents();
+
       updateEvents(activeDay);
     }
   }
+});
+
+eventsContainer.querySelectorAll(".check").forEach((checkButton) => {
+  checkButton.addEventListener("click", function () {
+    if (confirm("정말 다했나요??")) {
+      const eventDiv = this.closest(".event");
+      const eventTitle = eventDiv.querySelector(".event-title").innerText;
+
+      eventsArr.forEach((event) => {
+        if (
+          event.day === activeDay &&
+          event.month === month + 1 &&
+          event.year === year
+        ) {
+          event.events = event.events.filter(
+            (item) => item.title !== eventTitle
+          );
+
+          if (event.events.length === 0) {
+            eventsArr.splice(eventsArr.indexOf(event), 1);
+            const activeDayEl = document.querySelector(".day.active");
+            if (activeDayEl.classList.contains("event")) {
+              activeDayEl.classList.remove("event");
+            }
+          }
+        }
+      });
+      saveEvents();
+      eventDiv.remove();
+    }
+  });
+});
+
+eventsContainer.querySelectorAll(".edit").forEach((editButton) => {
+  editButton.addEventListener("click", function () {
+    const eventDiv = this.closest(".event");
+    const eventTitle = eventDiv.querySelector(".event-title");
+
+    const editInput = document.createElement("input");
+    editInput.type = "text";
+    editInput.value = eventTitle.innerText;
+    editInput.classList.add("edit-input");
+
+    const saveButton = document.createElement("button");
+    saveButton.innerText = "Save";
+    saveButton.classList.add("save-edit");
+
+    eventDiv.querySelector(".title").replaceChild(editInput, eventTitle);
+    eventDiv.querySelector(".tools").appendChild(saveButton);
+
+    saveButton.addEventListener("click", function () {
+      const newTitle = editInput.value;
+      if (newTitle === "") {
+        alert("제목을 입력하세요.");
+        return;
+      }
+
+      eventsArr.forEach((event) => {
+        if (
+          event.day === activeDay &&
+          event.month === month + 1 &&
+          event.year === year
+        ) {
+          event.events.forEach((item) => {
+            if (item.title === eventTitle.innerText) {
+              item.title = newTitle;
+            }
+          });
+        }
+      });
+      saveEvents();
+
+      eventDiv.querySelector(".title").replaceChild(eventTitle, editInput);
+      eventTitle.innerText = newTitle;
+      saveButton.remove();
+    });
+  });
 });
 
 function saveEvents() {
