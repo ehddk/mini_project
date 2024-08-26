@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", disPlayMovie);
 
 /**스와이퍼*/
 if ((window as any).Swiper) {
-    const swiper = new (window as any).Swiper(".swiper", {
+    new (window as any).Swiper(".swiper", {
         observer: true,
         observeParents: true,
         spaceBetween: 25,
