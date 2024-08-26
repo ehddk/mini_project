@@ -20,8 +20,8 @@ const calendar = document.querySelector(".calendar"),
   addEventTo = document.querySelector(".event-time-to "),
   addEventSubmit = document.querySelector(".add-event-btn ");
 
-  /**전체 삭제 버튼 */
-  const clearBtn=document.querySelector('.clear');
+/**전체 삭제 버튼 */
+const clearBtn = document.querySelector(".clear");
 
 let today = new Date();
 let activeDay;
@@ -536,16 +536,14 @@ document
     document.querySelector(".event-time-to").value = "";
   });
 
+//전체 삭제 버튼
+clearBtn.addEventListener("click", function () {
+  if (confirm("정말 삭제하시겠습니까?")) {
+  }
+  localStorage.removeItem("todo");
+  localStorage.removeItem("events");
 
-  //전체 삭제 버튼 
-  clearBtn.addEventListener('click',function(){
-    if(confirm('정말 삭제하시겠습니까?')){
+  eventsArr.length = 0;
 
-    }
-    localStorage.removeItem('todo');
-    localStorage.removeItem('events');
-
-    eventsArr.length = 0;
-
-    updateEvents(activeDay);
-  })
+  updateEvents(activeDay);
+});
