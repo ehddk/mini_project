@@ -5,23 +5,40 @@
 
     <h2 class="movie-title">현재 상영중인 영화</h2>
     <div class="swiper">
-        <div class="swiper-wrapper" id="movie-list-nowplaying">
-            <!--movie.ts에 작성 -->
-        </div>
+        <div class="swiper-wrapper" id="movie-list-nowplaying"></div>
         <button type="button" class="swiper-button-prev"></button>
         <button type="button" class="swiper-button-next"></button>
     </div>
 
     <h2 class="movie-title">개봉 예정 영화</h2>
     <div class="swiper">
-        <div class="swiper-wrapper" id="movie-list-upcoming">
-            <!--movie.ts에 작성 -->
-        </div>
+        <div class="swiper-wrapper" id="movie-list-upcoming"></div>
+        y
         <button type="button" class="swiper-button-prev"></button>
         <button
             type="button"
             class="swiper-button-next"
             id="movie-pager-right"
         ></button>
+    </div>
+</div>
+<!-- Popup -->
+<div id="movie-popup" class="movie-popup hidden">
+    <div class="popup-content">
+        <span class="popup-close"><i class="fa-solid fa-x"></i></span>
+        <img
+            id="popup-movie-image"
+            class="popup-movie-image"
+            src=""
+            alt="Movie Poster"
+        />
+        <div class="popup-movie-detail">
+            <h3 id="popup-movie-title"></h3>
+            <p id="popup-movie-overview"></p>
+            <button class="popup-play-button">
+                <p>play</p>
+                <i class="fa-regular fa-circle-play"></i>
+            </button>
+        </div>
     </div>
 </div>
