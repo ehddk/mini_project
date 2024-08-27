@@ -48,6 +48,7 @@ function displaySavedRecMovie(): void {
     }
 }
 
+// 추천 영화 화면에 표시
 function displayRecMovie(movie: Movie): void {
     const recMovieElement = document.querySelector(".today-rec-movie");
 
@@ -61,15 +62,17 @@ function displayRecMovie(movie: Movie): void {
     recMovieElement.innerHTML = `
     <div class="movie-container-inner">
         <div>
-        <a href="">
             <img src="${imageBaseUrl}${movie.poster_path}" alt="Recommended Movie" class="rec-movie-image"/>
-            </a>
+            <button class="rec-play-button">
+                <p>play</p>
+                <i class="fa-regular fa-circle-play"></i>
+            </button>
         </div>
         <div>
-        <p class="rec-movie-detail title">${movie.title}</p>
-        <p class="rec-movie-detail">${overviewText}</p>
-        <p class="rec-movie-detail">개봉일자 : ${movie.release_date}</p>
-        <p class="rec-movie-detail">평점 : ${movie.vote_average}</p>
+            <p class="rec-movie-detail title">${movie.title}</p>
+            <p class="rec-movie-detail">${overviewText}</p>
+            <p class="rec-movie-detail">개봉일자 : ${movie.release_date}</p>
+            <p class="rec-movie-detail">평점 : ${movie.vote_average}</p>
         </div>
     </div>
     `;
@@ -98,6 +101,7 @@ async function disPlayMovie() {
     try {
         const fetchResult = await fetchMovies();
         const { getNowPlaying, getUpComing } = fetchResult;
+
         function movieLists(movies: MovieResponse, movieId: string): void {
             const container = document.getElementById(movieId);
             if (!container) {
@@ -112,8 +116,21 @@ async function disPlayMovie() {
                     listItem.classList.add("swiper-slide");
                     const posterUrl = `${imageBaseUrl}${movie.poster_path}`;
                     listItem.innerHTML = `
-                        <img src="${posterUrl}" alt="${movie.title}" class="movie-image"/>
+                        <div class="movie-overlay-content">
+                            <img src="${posterUrl}" alt="" class="movie-image"/>
+                            <div class="movie-image-overview">
+                                <i class="fa-solid fa-circle-info"></i>
+                                <i class="fa-regular fa-circle-play"></i>
+                            </div>
+                        </div>
                     `;
+
+                    const infoIcon = listItem.querySelector(".fa-circle-info");
+                    if (infoIcon) {
+                        infoIcon.addEventListener("click", () => {
+                            openPopup(movie);
+                        });
+                    }
                     listElement.appendChild(listItem);
                 }
             });
@@ -133,7 +150,7 @@ async function disPlayMovie() {
 
 document.addEventListener("DOMContentLoaded", disPlayMovie);
 
-/**스와이퍼*/
+// 스와이퍼
 if ((window as any).Swiper) {
     new (window as any).Swiper(".swiper", {
         observer: true,
@@ -157,4 +174,31 @@ if ((window as any).Swiper) {
             el: ".swiper-pagination",
         },
     });
+}
+
+// 팝업
+function openPopup(movie: Movie): void {
+    const popup = document.getElementById("movie-popup");
+    const movieImage = document.getElementById(
+        "popup-movie-image"
+    ) as HTMLImageElement;
+    const movieTitle = document.getElementById("popup-movie-title");
+    const movieOverview = document.getElementById("popup-movie-overview");
+
+    if (popup && movieImage && movieTitle && movieOverview) {
+        movieImage.src = `https://image.tmdb.org/t/p/w300${movie.poster_path}`;
+        movieTitle.textContent = movie.title;
+        movieOverview.textContent = movie.overview || "정보 없음";
+
+        popup.classList.remove("hidden");
+    }
+}
+
+document.querySelector(".popup-close")?.addEventListener("click", closePopup);
+
+function closePopup(): void {
+    const popup = document.getElementById("movie-popup");
+    if (popup) {
+        popup.classList.add("hidden");
+    }
 }
